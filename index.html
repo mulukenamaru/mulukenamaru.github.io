@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Muluken Melkie's Computer Science portfolio at the University of Gondar.">
-  <title>Muluken Melkie | Portfolio</title>
+
+  <title>Muluken Melkie | Computer Science Portfolio</title>
+  <meta name="description" content="Portfolio of Muluken Melkie, Computer Science student at the University of Gondar.">
 
   <style>
     :root {
-      --bg: #080808;
-      --card: #131313;
+      --bg: #0b0b0b;
+      --card: #171717;
       --gold: #d4af37;
-      --light-gold: #f3d978;
-      --white: #f5f5f5;
-      --muted: #bdbdbd;
-      --border: rgba(212, 175, 55, 0.28);
+      --white: #ffffff;
+      --muted: #b8b8b8;
+      --border: #353535;
     }
 
     * {
@@ -26,345 +26,258 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
     }
 
     body {
+      font-family: Arial, sans-serif;
       background: var(--bg);
       color: var(--white);
-      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.7;
     }
 
     a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: min(1100px, 90%);
-      margin: auto;
-    }
-
-    .gold {
       color: var(--gold);
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.8;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8, 8, 8, 0.97);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav {
-      min-height: 72px;
+      background: #111111;
+      border-bottom: 1px solid var(--gold);
+      padding: 16px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
       color: var(--gold);
+      font-size: 22px;
+      font-weight: bold;
     }
 
-    .nav-links {
+    nav {
       display: flex;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 20px;
-      list-style: none;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.9rem;
+    nav a {
+      color: var(--white);
+      font-size: 14px;
     }
 
-    .nav-links a:hover {
+    nav a:hover {
       color: var(--gold);
+    }
+
+    section {
+      padding: 75px 8%;
+      scroll-margin-top: 75px;
+    }
+
+    h2 {
+      color: var(--gold);
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 14px;
     }
 
     .hero {
-      min-height: 85vh;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 50px;
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    h1 {
-      font-size: clamp(2.6rem, 6vw, 4.6rem);
-      line-height: 1.12;
-      margin-bottom: 22px;
-    }
-
-    .hero-description {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin-bottom: 28px;
-    }
-
-    .buttons {
+      min-height: 80vh;
       display: flex;
+      align-items: center;
+      gap: 45px;
       flex-wrap: wrap;
-      gap: 13px;
+      background:
+        radial-gradient(ellipse at top right, #302711 0%, #0b0b0b 55%);
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 270px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero h3 {
+      color: #dddddd;
+      font-size: 19px;
+      margin-bottom: 18px;
+    }
+
+    .hero-image {
+      width: 250px;
+      height: 250px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--card);
     }
 
     .btn {
       display: inline-block;
       padding: 12px 22px;
-      border: 1px solid var(--gold);
-      border-radius: 7px;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    .btn-primary {
       background: var(--gold);
-      color: #080808;
-    }
-
-    .btn-primary:hover {
-      background: var(--light-gold);
-      transform: translateY(-2px);
+      color: #111111;
+      border-radius: 6px;
+      font-weight: bold;
+      margin: 12px 10px 0 0;
     }
 
     .btn-outline {
+      background: transparent;
       color: var(--gold);
+      border: 1px solid var(--gold);
     }
 
-    .btn-outline:hover {
-      background: rgba(212, 175, 55, 0.1);
-    }
-
-    .portrait-frame {
-      width: 100%;
-      max-width: 350px;
-      justify-self: center;
-      padding: 10px;
-      border: 2px solid var(--gold);
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
-    }
-
-    .profile-photo {
-      display: block;
-      width: 100%;
-      height: 420px;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 12px;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(2rem, 4vw, 2.7rem);
-      margin-bottom: 8px;
-    }
-
-    .section-heading p:last-child {
-      color: var(--muted);
-    }
-
-    .about-box {
-      max-width: 850px;
-      margin: auto;
-      padding: 30px;
+    .about-box,
+    .skill-details,
+    .project-card,
+    .education-card,
+    .contact-box {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 13px;
-    }
-
-    .about-box p {
-      color: var(--muted);
-      margin-bottom: 15px;
-    }
-
-    .about-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .card {
+      border-radius: 10px;
       padding: 25px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .skill {
+      min-height: 85px;
+      padding: 18px;
+      color: var(--white);
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      transition: 0.25s;
+      border: 1px solid #444444;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s ease;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .skill:hover,
+    .skill.active {
       border-color: var(--gold);
+      background: #292313;
+      transform: translateY(-3px);
     }
 
-    .card-icon {
-      font-size: 1.9rem;
-      margin-bottom: 12px;
+    .skill:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
     }
 
-    .card h3 {
+    .skill-details {
+      border-left: 4px solid var(--gold);
+      min-height: 220px;
+    }
+
+    .skill-details h3 {
       color: var(--gold);
-      margin-bottom: 12px;
-      font-size: 1.15rem;
+      font-size: 23px;
     }
 
-    .card p {
-      color: var(--muted);
-      font-size: 0.95rem;
+    .skill-details strong {
+      color: var(--white);
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      transition: 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .project-card h3,
+    .education-card h3 {
+      color: var(--gold);
     }
 
     .tag {
-      background: rgba(212, 175, 55, 0.08);
-      color: var(--light-gold);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 4px 9px;
-      font-size: 0.8rem;
+      display: inline-block;
+      color: var(--gold);
+      border: 1px solid #695a2d;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 12px;
+      margin: 4px 3px 0 0;
     }
 
-    .education {
-      max-width: 750px;
-      margin: auto;
-      padding: 30px;
-      background: var(--card);
-      border-left: 4px solid var(--gold);
-      border-radius: 8px;
-    }
-
-    .education p {
-      color: var(--muted);
-      margin-top: 7px;
-    }
-
-    .contact-box {
-      max-width: 700px;
-      margin: auto;
-      padding: 35px;
-      text-align: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      margin: 12px 0 22px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
+    .contact-box a {
+      overflow-wrap: anywhere;
     }
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 0;
       text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
+      padding: 25px 8%;
+      border-top: 1px solid var(--border);
+      background: #111111;
     }
 
-    footer span {
-      color: var(--gold);
+    footer p {
+      margin: 0;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 650px) {
+      header {
+        position: static;
+        padding: 18px 5%;
+      }
+
       nav {
-        flex-direction: column;
-        justify-content: center;
-        padding: 14px 0;
-      }
-
-      .nav-links {
-        justify-content: center;
-        gap: 10px 16px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 35px;
-        padding-top: 45px;
-      }
-
-      .portrait-frame {
-        grid-row: 1;
-        max-width: 285px;
-      }
-
-      .profile-photo {
-        height: 350px;
-      }
-
-      .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .buttons {
-        justify-content: center;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 540px) {
-      .grid {
-        grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       section {
-        padding: 58px 0;
+        padding: 50px 5%;
       }
 
-      .about-box,
-      .contact-box {
-        padding: 22px;
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-image {
+        width: 190px;
+        height: 190px;
       }
     }
   </style>
@@ -372,318 +285,372 @@
 
 <body>
 
+  <!-- HEADER -->
   <header>
-    <nav class="container">
-      <a href="#home" class="logo">MULUKEN<span>.</span></a>
+    <a href="#home" class="logo">Muluken Melkie</a>
 
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main>
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <p>WELCOME TO MY PORTFOLIO</p>
 
-    <section class="container hero" id="home">
-      <div>
-        <p class="eyebrow">Computer Science Student</p>
+      <h1>Hello, I'm <span>Muluken Melkie</span></h1>
 
-        <h1>
-          Hello, I'm<br>
-          <span class="gold">Muluken Melkie</span>
-        </h1>
+      <h3>Computer Science Student | University of Gondar</h3>
 
-        <p class="hero-description">
-          I am a Computer Science student at the University of Gondar,
-          College of Informatics. My technical interests include
-          networking, system administration, web development, and
-          software development. I am committed to continuous learning
-          and developing practical technology skills.
-        </p>
-
-        <div class="buttons">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
-      </div>
-
-      <div class="portrait-frame">
-        <img
-          src="./mule.jpg"
-          alt="Muluken Melkie"
-          class="profile-photo"
-        >
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Get to Know Me</p>
-          <h2>About <span class="gold">Me</span></h2>
-          <p>My background and professional goals.</p>
-        </div>
-
-        <div class="about-box">
-          <p>
-            My name is Muluken Melkie. I study Computer Science at
-            the University of Gondar, College of Informatics.
-          </p>
-
-          <p>
-            I am interested in how computer systems, networks, and
-            software applications work. My focus areas include
-            networking, system administration, web development,
-            and software development.
-          </p>
-
-          <p>
-            My goal is to develop strong technical skills, build
-            useful projects, and grow into a capable IT professional.
-            I value problem-solving, practical experience, and
-            continuous improvement.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">My Technical Interests</p>
-          <h2>Skills &amp; <span class="gold">Interests</span></h2>
-          <p>Areas in which I am developing my knowledge and abilities.</p>
-        </div>
-
-        <div class="grid">
-
-          <article class="card">
-            <div class="card-icon">🌐</div>
-            <h3>Networking</h3>
-            <p>
-              Learning IP addressing, subnetting, network
-              configuration, connectivity, and troubleshooting.
-            </p>
-            <div class="tags">
-              <span class="tag">TCP/IP</span>
-              <span class="tag">Subnetting</span>
-              <span class="tag">VLANs</span>
-              <span class="tag">Packet Tracer</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🖥️</div>
-            <h3>System Administration</h3>
-            <p>
-              Exploring operating systems, configuration,
-              user management, maintenance, and troubleshooting.
-            </p>
-            <div class="tags">
-              <span class="tag">Windows</span>
-              <span class="tag">Linux</span>
-              <span class="tag">Operating Systems</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">💻</div>
-            <h3>Web Development</h3>
-            <p>
-              Learning to create responsive websites with
-              structured layouts and modern styling.
-            </p>
-            <div class="tags">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⚙️</div>
-            <h3>Software Development</h3>
-            <p>
-              Practicing programming fundamentals, object-oriented
-              programming, debugging, and application development.
-            </p>
-            <div class="tags">
-              <span class="tag">Java</span>
-              <span class="tag">Kotlin</span>
-              <span class="tag">OOP</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🗄️</div>
-            <h3>Database Fundamentals</h3>
-            <p>
-              Studying data organization, database design,
-              storage, and information retrieval.
-            </p>
-            <div class="tags">
-              <span class="tag">SQL</span>
-              <span class="tag">SQLite</span>
-              <span class="tag">Database Design</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">📱</div>
-            <h3>Mobile Development</h3>
-            <p>
-              Exploring Android applications, user interfaces,
-              and mobile data storage.
-            </p>
-            <div class="tags">
-              <span class="tag">Android</span>
-              <span class="tag">Kotlin</span>
-              <span class="tag">Firebase</span>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Learning Through Practice</p>
-          <h2>My <span class="gold">Projects</span></h2>
-          <p>Examples of projects and technical practice.</p>
-        </div>
-
-        <div class="grid">
-
-          <article class="card">
-            <div class="card-icon">🎓</div>
-            <h3>Smart Campus Assistance</h3>
-            <p>
-              A campus assistance application concept designed to
-              help students access useful university information
-              and services.
-            </p>
-            <div class="tags">
-              <span class="tag">Android</span>
-              <span class="tag">Kotlin</span>
-              <span class="tag">Database</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🔌</div>
-            <h3>Network Configuration Lab</h3>
-            <p>
-              Networking practice involving IP addressing,
-              subnetting, VLAN configuration, and connectivity testing.
-            </p>
-            <div class="tags">
-              <span class="tag">Networking</span>
-              <span class="tag">VLANs</span>
-              <span class="tag">Packet Tracer</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🌍</div>
-            <h3>Personal Portfolio</h3>
-            <p>
-              A responsive portfolio website presenting my
-              background, technical interests, and project work.
-            </p>
-            <div class="tags">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">GitHub Pages</span>
-            </div>
-            <p style="margin-top: 15px;">
-              <a
-                class="gold"
-                href="https://github.com/mulukenamaru"
-                target="_blank"
-                rel="noopener noreferrer"
-              >My GitHub Profile →</a>
-            </p>
-          </article>
-
-        </div>
-
-        <p style="color: var(--muted); text-align: center; margin-top: 25px;">
-          Update these descriptions to reflect your actual project progress.
-        </p>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Academic Background</p>
-          <h2>My <span class="gold">Education</span></h2>
-        </div>
-
-        <div class="education">
-          <p class="eyebrow">University Education</p>
-          <h3>Computer Science</h3>
-          <p><strong>University:</strong> University of Gondar (UOG)</p>
-          <p><strong>College:</strong> College of Informatics</p>
-          <p>
-            <strong>Interests:</strong> Networking, System
-            Administration, Web Development, and Software Development
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Let's Connect</p>
-          <h2>Contact <span class="gold">Me</span></h2>
-          <p>Connect with me about technology and projects.</p>
-        </div>
-
-        <div class="contact-box">
-          <h3>Muluken Melkie</h3>
-          <p>
-            Computer Science Student<br>
-            University of Gondar · College of Informatics
-          </p>
-
-          <div class="contact-links">
-            <a
-              class="btn btn-primary"
-              href="mailto:mulukenamaru74@gmail.com"
-            >Email Me</a>
-
-            <a
-              class="btn btn-outline"
-              href="https://github.com/mulukenamaru"
-              target="_blank"
-              rel="noopener noreferrer"
-            >GitHub Profile</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
       <p>
-        © <span id="year"></span> Muluken Melkie.
-        Built with <span>purpose</span> and continuous learning.
+        I am a Computer Science student interested in building
+        useful technology solutions. My areas of interest include
+        networking, system administration, web development,
+        and software development.
+      </p>
+
+      <a href="#skills" class="btn">Explore My Skills</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+
+    <!-- Put mule.jpg beside this index.html file -->
+    <img
+      src="./mule.jpg"
+      alt="Muluken Melkie profile photo"
+      class="hero-image"
+      onerror="this.style.display='none'"
+    >
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+
+    <div class="about-box">
+      <p>
+        My name is Muluken Melkie. I am a Computer Science
+        student at the University of Gondar (UOG), Ethiopia.
+      </p>
+
+      <p>
+        I am learning how software is developed, how computer
+        networks communicate, how databases store information,
+        and how operating systems manage computer resources.
+      </p>
+
+      <p>
+        I want to strengthen my practical skills by building
+        projects, solving technical problems, and learning new
+        technologies.
+      </p>
+
+      <span class="tag">Problem Solving</span>
+      <span class="tag">Technology</span>
+      <span class="tag">Continuous Learning</span>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE SKILLS -->
+  <section id="skills">
+    <h2>My Technical Skills</h2>
+
+    <p>
+      Click any skill below to learn what it means, its key
+      concepts, and a practical example.
+    </p>
+
+    <div class="skills-grid">
+      <button class="skill" data-skill="web">
+        Web Development
+      </button>
+
+      <button class="skill" data-skill="software">
+        Software Development
+      </button>
+
+      <button class="skill" data-skill="network">
+        Computer Networking
+      </button>
+
+      <button class="skill" data-skill="system">
+        System Administration
+      </button>
+
+      <button class="skill" data-skill="database">
+        Database Management
+      </button>
+
+      <button class="skill" data-skill="git">
+        Git and GitHub
+      </button>
+
+      <button class="skill" data-skill="algorithm">
+        Algorithms and Data Structures
+      </button>
+
+      <button class="skill" data-skill="security">
+        Cybersecurity Basics
+      </button>
+    </div>
+
+    <div class="skill-details" aria-live="polite">
+      <h3 id="skill-title">Choose a skill</h3>
+
+      <p id="skill-description">
+        Select any skill card above to see its explanation.
+      </p>
+
+      <p>
+        <strong>Key concepts:</strong>
+        <span id="skill-concepts">
+          Your selected skill concepts will appear here.
+        </span>
+      </p>
+
+      <p>
+        <strong>Practical example:</strong>
+        <span id="skill-example">
+          A practical example will appear here.
+        </span>
       </p>
     </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>My Projects</h2>
+
+    <p>
+      These project descriptions should be updated to match
+      your actual work and progress.
+    </p>
+
+    <div class="project-grid">
+
+      <article class="project-card">
+        <h3>Smart Campus Assistance</h3>
+
+        <p>
+          A university application concept designed to help
+          students access campus information and services.
+        </p>
+
+        <span class="tag">Android</span>
+        <span class="tag">Kotlin</span>
+        <span class="tag">Database</span>
+      </article>
+
+      <article class="project-card">
+        <h3>Personal Portfolio Website</h3>
+
+        <p>
+          A responsive website that presents my background,
+          technical interests, skills, and projects.
+        </p>
+
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+      </article>
+
+      <article class="project-card">
+        <h3>Networking Lab Practice</h3>
+
+        <p>
+          Practice exercises involving IP addressing, subnetting,
+          VLAN configuration, and network communication.
+        </p>
+
+        <span class="tag">Networking</span>
+        <span class="tag">IP Addressing</span>
+        <span class="tag">Packet Tracer</span>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="education-card">
+      <h3>University of Gondar (UOG)</h3>
+
+      <p>Computer Science</p>
+      <p>Gondar, Ethiopia</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+
+    <div class="contact-box">
+      <p>
+        If you would like to discuss technology, projects,
+        or opportunities, you can contact me below.
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:mulukenamaru74@gmail.com">
+          mulukenamaru74@gmail.com
+        </a>
+      </p>
+
+      <p>
+        <strong>GitHub:</strong>
+        <a
+          href="https://github.com/mulukenamaru"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/mulukenamaru
+        </a>
+      </p>
+
+      <p>
+        <strong>Phone:</strong>
+        <a href="tel:+521918511548">+521 918511548</a>
+      </p>
+
+      <a
+        class="btn"
+        href="mailto:mulukenamaru74@gmail.com"
+      >
+        Send Me an Email
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      &copy; <span id="year"></span> Muluken Melkie.
+      All rights reserved.
+    </p>
   </footer>
 
+  <!-- INTERACTIVE SKILLS JAVASCRIPT -->
   <script>
+    const skills = {
+      web: {
+        title: "Web Development",
+        description:
+          "Web development is the process of creating websites and web applications that run in a browser.",
+        concepts:
+          "HTML creates page structure, CSS controls appearance, and JavaScript adds interactive behavior.",
+        example:
+          "Building this responsive portfolio website with interactive skill cards."
+      },
+
+      software: {
+        title: "Software Development",
+        description:
+          "Software development involves designing, writing, testing, and maintaining computer programs.",
+        concepts:
+          "Programming logic, variables, functions, classes, debugging, and object-oriented programming.",
+        example:
+          "Creating a student registration application using Java."
+      },
+
+      network: {
+        title: "Computer Networking",
+        description:
+          "Computer networking connects devices so they can exchange data and share resources.",
+        concepts:
+          "IP addresses, subnet masks, routers, switches, VLANs, DNS, and network protocols.",
+        example:
+          "Configuring multiple VLANs and IP addresses in Cisco Packet Tracer."
+      },
+
+      system: {
+        title: "System Administration",
+        description:
+          "System administration involves managing operating systems, computers, users, and services.",
+        concepts:
+          "User accounts, permissions, software installation, updates, backups, and troubleshooting.",
+        example:
+          "Creating user accounts and setting file permissions on a computer."
+      },
+
+      database: {
+        title: "Database Management",
+        description:
+          "Database management organizes information so it can be stored, updated, and retrieved efficiently.",
+        concepts:
+          "Tables, SQL, primary keys, foreign keys, relationships, and database queries.",
+        example:
+          "Designing a database to store student information and course registrations."
+      },
+
+      git: {
+        title: "Git and GitHub",
+        description:
+          "Git tracks changes in source code, while GitHub hosts repositories for sharing and collaborating on projects.",
+        concepts:
+          "Repositories, commits, branches, merges, pushes, and pull requests.",
+        example:
+          "Uploading your portfolio source code to GitHub and publishing it with GitHub Pages."
+      },
+
+      algorithm: {
+        title: "Algorithms and Data Structures",
+        description:
+          "Algorithms provide steps to solve problems, while data structures organize information for efficient use.",
+        concepts:
+          "Arrays, linked lists, stacks, queues, searching, sorting, and algorithm complexity.",
+        example:
+          "Implementing a stack using an array in Java."
+      },
+
+      security: {
+        title: "Cybersecurity Basics",
+        description:
+          "Cybersecurity helps protect computer systems, networks, and information from unauthorized access and attacks.",
+        concepts:
+          "Strong passwords, authentication, access control, software updates, backups, and phishing awareness.",
+        example:
+          "Using strong unique passwords and restricting access to sensitive files."
+      }
+    };
+
+    const skillButtons = document.querySelectorAll(".skill");
+
+    skillButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        const selectedSkill = skills[button.dataset.skill];
+
+        if (!selectedSkill) return;
+
+        document.getElementById("skill-title").textContent =
+          selectedSkill.title;
+
+        document.getElementById("skill-description").textContent =
+          selectedSkill.description;
+
+        document.getElementById("skill-concepts").textContent =
+          selectedSkill.concepts;
+
+        document.getElementById("skill-example").textContent =
+          selectedSkill.example;
+
+        skillButtons.forEach(function(item) {
+          item.classList.remove("active");
+          item.setAttribute("aria-pressed", "false");
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
+      });
+    });
+
     document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
