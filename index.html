@@ -2,621 +2,610 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Muluken Melkie — Computer Science student portfolio, projects, skills and coding journey.">
-<meta name="theme-color" content="#07111f">
-<title>Muluken Melkie | Developer Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muluken Melkie — Computer Science student at University of Gondar, interested in networking and system administration.">
+  <title>Muluken Melkie | Portfolio</title>
+  <style>
+    :root {
+      --bg: #090909;
+      --surface: #171717;
+      --text: #f5f5f5;
+      --muted: #b0b0b0;
+      --gold: #d4af37;
+      --gold-light: #f0d875;
+      --border: rgba(212,175,55,.25);
+    }
 
-<style>
-:root {
-  --bg:#07111f; --panel:#0d1b30; --text:#f0f6ff;
-  --muted:#a7b8d0; --blue:#38bdf8; --purple:#818cf8;
-  --border:#243956; --card:#0a1729;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth;scroll-padding-top:85px}
-body {
-  margin:0;background:var(--bg);color:var(--text);
-  font:16px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif;
-}
-a {color:inherit;text-decoration:none}
-button,input,textarea {font:inherit}
-button,a { -webkit-tap-highlight-color:transparent }
-button:focus-visible,a:focus-visible,input:focus-visible,
-textarea:focus-visible {outline:2px solid var(--blue);outline-offset:4px}
-.container {width:min(1120px,92%);margin:auto}
-section {padding:75px 0;border-bottom:1px solid var(--border)}
-.section-title {font-size:clamp(1.8rem,4vw,2.4rem);margin:0}
-.section-subtitle {color:var(--muted);margin-top:5px}
-.accent {color:var(--blue)}
-.muted {color:var(--muted)}
-.tag {
-  display:inline-block;padding:4px 10px;border:1px solid var(--border);
-  border-radius:30px;font-size:.8rem;color:var(--blue);margin:3px;
-}
-.btn {
-  display:inline-flex;align-items:center;justify-content:center;
-  gap:8px;padding:11px 18px;border-radius:10px;
-  border:1px solid var(--border);cursor:pointer;font-weight:650;
-  transition:transform .2s,background .2s;
-}
-.btn:hover {transform:translateY(-2px)}
-.btn-primary {background:linear-gradient(110deg,#0284c7,#635bdb);color:white;border:0}
-.btn-secondary {background:transparent;color:var(--text)}
-header {
-  position:sticky;top:0;z-index:10;background:rgba(7,17,31,.94);
-  backdrop-filter:blur(14px);border-bottom:1px solid var(--border);
-}
-.nav {min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand {font-weight:800;font-size:1.05rem}
-.brand-mark {color:var(--blue);border:1px solid var(--blue);padding:3px 7px;border-radius:7px;margin-right:8px}
-.nav-links {display:flex;gap:20px;align-items:center;font-size:.9rem}
-.nav-links a {color:var(--muted)}
-.nav-links a:hover,.nav-links a.active {color:var(--blue)}
-.nav-actions {display:flex;align-items:center;gap:8px}
-.icon-btn {background:transparent;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:7px 10px;cursor:pointer}
-.menu-toggle {display:none}
-.hero {
-  padding:100px 0 85px;position:relative;overflow:hidden;
-  background:radial-gradient(ellipse at 75% 30%,#102c55 0,transparent 45%),
-             radial-gradient(ellipse at 15% 70%,#111c46 0,transparent 38%);
-}
-.hero-grid {display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:55px}
-.eyebrow {color:var(--blue);letter-spacing:2px;text-transform:uppercase;font-size:.8rem;font-weight:750}
-.hero h1 {font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.08;margin:18px 0}
-.hero h2 {font-size:clamp(1.2rem,3vw,1.8rem);margin:0 0 16px}
-.hero p {color:var(--muted);max-width:590px}
-.hero-buttons {display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}
-.socials {display:flex;gap:18px;color:var(--blue);margin-top:22px}
-.socials a:hover {text-decoration:underline}
-.avatar {
-  width:min(290px,75vw);aspect-ratio:1;margin:auto;border-radius:50%;
-  display:grid;place-items:center;font-size:6rem;font-weight:800;
-  color:#dbeafe;background:linear-gradient(135deg,#172b4a,#243f70);
-  border:3px solid var(--blue);box-shadow:0 0 55px #2563eb55;
-}
-.grid {display:grid;gap:18px}
-.about-grid {grid-template-columns:1.1fr 1fr .9fr;align-items:start}
-.card {
-  background:linear-gradient(145deg,var(--panel),var(--card));
-  border:1px solid var(--border);border-radius:14px;padding:23px;
-}
-.card h3 {margin-top:0}
-.profile-row {display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
-.profile-row:last-child {border:0}
-.skills-grid {grid-template-columns:repeat(4,minmax(0,1fr));margin-top:25px}
-.skill-card {border-top:2px solid var(--blue)}
-.skill-card:nth-child(2) {border-color:#a78bfa}
-.skill-card:nth-child(3) {border-color:#34d399}
-.skill-card:nth-child(4) {border-color:#fb923c}
-.skill-card ul {padding-left:20px;margin-bottom:0;color:var(--muted)}
-.project-toolbar {display:flex;flex-wrap:wrap;gap:9px;margin:25px 0}
-.filter {
-  border:1px solid var(--border);border-radius:25px;padding:8px 15px;
-  background:transparent;color:var(--text);cursor:pointer;
-}
-.filter.active,.filter:hover {background:#1679cf;border-color:#1679cf}
-.projects-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
-.project-visual {
-  height:135px;display:grid;place-items:center;font-size:2.6rem;
-  border-radius:9px;background:linear-gradient(135deg,#10284b,#332b66);
-  margin-bottom:18px;
-}
-.project-card {display:flex;flex-direction:column}
-.project-card p {color:var(--muted);flex:1}
-.project-actions {display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
-.project-actions .btn {font-size:.85rem;padding:8px 11px}
-.two-columns {grid-template-columns:1fr 1fr}
-.timeline {border-left:2px solid var(--border);padding-left:22px;margin:24px 0}
-.timeline-item {position:relative;margin-bottom:25px}
-.timeline-item:before {
-  content:"";position:absolute;left:-29px;top:8px;width:11px;height:11px;
-  border-radius:50%;background:var(--blue);box-shadow:0 0 12px #38bdf855;
-}
-.stats-grid {grid-template-columns:repeat(3,1fr);margin-top:20px}
-.stat {text-align:center}
-.stat strong {font-size:1.5rem;color:var(--blue);display:block}
-.github-panel {display:grid;grid-template-columns:1fr 1.5fr;gap:20px}
-.contribution {display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
-.contribution span {aspect-ratio:1;border-radius:3px;background:#14263d}
-.contribution span:nth-child(5n) {background:#176746}
-.contribution span:nth-child(7n) {background:#22a36b}
-.contact-grid {display:grid;grid-template-columns:1.2fr .8fr;gap:35px}
-form {display:grid;gap:15px}
-label {display:block;font-size:.9rem;margin-bottom:5px}
-input,textarea {
-  width:100%;background:var(--card);color:var(--text);
-  border:1px solid var(--border);border-radius:9px;padding:12px;
-}
-textarea {min-height:140px;resize:vertical}
-#form-status {min-height:28px;color:var(--blue)}
-footer {padding:25px 0;color:var(--muted);font-size:.88rem}
-footer .container {display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-[hidden] {display:none!important}
-body.light {
-  --bg:#f3f7fc;--panel:#fff;--text:#13233a;--muted:#53657d;
-  --border:#d7e1ed;--card:#fff;
-}
-body.light header {background:rgba(243,247,252,.94)}
-body.light .hero {background:radial-gradient(ellipse at 75% 30%,#dbeafe,transparent 50%)}
-@media(max-width:900px) {
-  .nav-links {gap:11px;font-size:.82rem}
-  .about-grid {grid-template-columns:1fr 1fr}
-  .about-grid .profile-card {grid-column:1/-1}
-  .skills-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
-  .projects-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:650px) {
-  section {padding:55px 0}
-  .menu-toggle {display:inline-block}
-  .nav {flex-wrap:wrap;padding:12px 0}
-  .nav-links {
-    display:none;flex-direction:column;align-items:stretch;width:100%;
-    padding:10px 0 15px;gap:0;
-  }
-  .nav-links.open {display:flex}
-  .nav-links a {padding:10px 5px}
-  .hero {padding:65px 0}
-  .hero-grid {grid-template-columns:1fr;gap:35px}
-  .hero-content {order:1}
-  .hero-visual {order:0}
-  .avatar {width:170px;font-size:4rem}
-  .about-grid,.projects-grid,.two-columns,.github-panel,.contact-grid {grid-template-columns:1fr}
-  .about-grid .profile-card {grid-column:auto}
-  .skills-grid {grid-template-columns:1fr 1fr;gap:10px}
-  .card {padding:17px}
-  .stats-grid {grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:380px) {
-  .skills-grid {grid-template-columns:1fr}
-  .hero-buttons .btn {width:100%}
-}
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {scroll-behavior:auto!important;transition:none!important}
-}
-</style>
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    a:hover { color: var(--gold-light); }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9,9,9,.95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a { color: var(--muted); }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .menu-btn {
+      display: none;
+      padding: 8px 12px;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .hero {
+      padding: 100px 0 85px;
+      background:
+        radial-gradient(ellipse at 85% 20%, #302710 0%, transparent 35%),
+        var(--bg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(45px, 7vw, 78px);
+      line-height: 1.05;
+      margin: 18px 0;
+    }
+
+    h1 span, .gold { color: var(--gold); }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--gold);
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #090909;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      color: #090909;
+    }
+
+    .btn-secondary { color: var(--gold); }
+
+    .profile-card {
+      padding: 30px;
+      background: linear-gradient(145deg, #211d11, #141414);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .avatar {
+      width: 95px;
+      height: 95px;
+      display: grid;
+      place-items: center;
+      background: var(--gold);
+      color: #090909;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .profile-card h2 { margin-bottom: 5px; }
+
+    .profile-card p { color: var(--muted); }
+
+    section {
+      padding: 75px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 42px);
+      margin: 8px 0 15px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .about-grid, .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+    }
+
+    .panel, .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .panel p, .card p { color: var(--muted); }
+
+    .facts {
+      display: grid;
+      gap: 18px;
+    }
+
+    .fact strong {
+      display: block;
+      color: var(--gold);
+    }
+
+    .fact span { overflow-wrap: anywhere; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      transition: transform .2s, border-color .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      color: var(--gold);
+    }
+
+    .card h3 { margin-bottom: 8px; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: #eadfb9;
+      border-radius: 30px;
+      font-size: 14px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--gold);
+    }
+
+    .contact-item span { overflow-wrap: anywhere; }
+
+    form { display: grid; gap: 15px; }
+
+    label { font-size: 14px; }
+
+    input, textarea {
+      display: block;
+      width: 100%;
+      margin-top: 7px;
+      padding: 12px;
+      background: #0b0b0b;
+      color: white;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    input:focus, textarea:focus {
+      outline: 1px solid var(--gold);
+      border-color: var(--gold);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button { cursor: pointer; font: inherit; }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards { grid-template-columns: repeat(2, 1fr); }
+
+      .hero { padding: 70px 0; }
+
+      .menu-btn { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 5%;
+        right: 5%;
+        padding: 20px;
+        background: #151515;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        flex-direction: column;
+      }
+
+      .nav-links.open { display: flex; }
+    }
+
+    @media (max-width: 520px) {
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 55px 0; }
+      .panel, .card, .profile-card { padding: 20px; }
+    }
+  </style>
 </head>
-
 <body>
+
 <header>
-  <div class="container nav">
-    <a class="brand" href="#home" aria-label="Muluken Melkie home">
-      <span class="brand-mark">MM</span> Muluken Melkie
-    </a>
-    <nav class="nav-links" id="navigation" aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#about">About</a>
-      <a href="#skills">Skills</a><a href="#projects">Projects</a>
-      <a href="#education">Education</a><a href="#experience">Experience</a>
-      <a href="#certifications">Certifications</a><a href="#github">GitHub</a>
+  <nav class="container">
+    <a class="logo" href="#home">MULUKEN<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false">☰ Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#interests">Interests</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark theme">☼</button>
-      <button class="icon-btn menu-toggle" id="menu-toggle" type="button"
-        aria-label="Open navigation menu" aria-expanded="false" aria-controls="navigation">☰</button>
     </div>
-  </div>
+  </nav>
 </header>
 
 <main>
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div class="hero-content">
-      <span class="eyebrow">Welcome to my portfolio</span>
-      <h1>Hi, I'm <span class="accent">Muluken Melkie</span></h1>
-      <h2>Computer Science Student</h2>
-      <p>
-        I am a Computer Science student interested in software development,
-        problem-solving, and building useful digital products. I am continuously
-        learning and working to turn ideas into practical solutions.
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Computer Science Student · UOG</div>
+        <h1>Muluken<br><span>Melkie.</span></h1>
+        <p>
+          I am a Computer Science student at the University of Gondar.
+          My main interests are computer networking and system administration.
+          I enjoy learning how networks connect, how servers work, and how
+          reliable computer systems are managed.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#contact">Contact Me</a>
+          <a class="btn btn-secondary" href="#projects">Explore Projects</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="avatar">MM</div>
+        <h2>Muluken Melkie</h2>
+        <p>Computer Science · University of Gondar</p>
+        <hr style="border:0;border-top:1px solid var(--border);margin:22px 0">
+        <strong class="gold">My focus</strong>
+        <p>Networking &amp; System Administration</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="eyebrow">About Me</div>
+      <h2 class="section-title">Learning today. <span class="gold">Building for tomorrow.</span></h2>
+      <p class="section-intro">
+        I am developing my computer science knowledge through study,
+        practice, and hands-on technical projects.
       </p>
-      <div class="hero-buttons">
-        <a class="btn btn-primary" href="#projects">View My Projects ↗</a>
-        <button class="btn btn-secondary" id="download-cv" type="button">↓ Download CV</button>
-      </div>
-      <div class="socials">
-        <a href="https://github.com/mulukenamaru" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        <a href="#contact">LinkedIn ↗</a>
-        <a href="#contact">Email ✉</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <!-- Replace this placeholder with your own profile photo if desired. -->
-      <div class="avatar" role="img" aria-label="Profile image placeholder">MM</div>
-    </div>
-  </div>
-</section>
 
-<section id="about">
-  <div class="container">
-    <h2 class="section-title">About <span class="accent">Me</span></h2>
-    <p class="section-subtitle">My background, interests, and goals.</p>
-    <div class="grid about-grid">
-      <article>
-        <h3>Who I Am</h3>
-        <p class="muted">
-          I am a Computer Science student developing my knowledge of programming,
-          software design, and modern technologies. I enjoy learning by building
-          projects and solving problems step by step.
-        </p>
-        <p class="muted">
-          My goal is to grow into a capable developer, contribute to meaningful
-          software, and pursue opportunities to learn from real-world challenges.
-        </p>
-      </article>
-      <div class="card">
-        <h3>My Journey</h3>
-        <p><span class="accent">Education</span><br>University of Gondar — verify and update your degree details.</p>
-        <p><span class="accent">Career Interests</span><br>Software Development, Web Development, Mobile Applications.</p>
-        <p><span class="accent">Current Focus</span><br>Improving programming skills and developing practical projects.</p>
-        <p><span class="accent">My Goal</span><br>Build useful software and gain professional experience.</p>
-      </div>
-      <aside class="card profile-card">
-        <h3>Quick Profile</h3>
-        <div class="profile-row"><span class="muted">Name</span><strong>Muluken Melkie</strong></div>
-        <div class="profile-row"><span class="muted">University</span><span>University of Gondar</span></div>
-        <div class="profile-row"><span class="muted">Field</span><span>Computer Science</span></div>
-        <div class="profile-row"><span class="muted">Status</span><span>Student</span></div>
-        <p class="accent">Always learning. Always building.</p>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="container">
-    <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
-    <p class="section-subtitle">Edit these lists to show only technologies you can confidently use.</p>
-    <div class="grid skills-grid">
-      <article class="card skill-card">
-        <h3>⌘ Programming</h3>
-        <ul><li>Java</li><li>Python</li><li>C / C++</li><li>JavaScript</li></ul>
-      </article>
-      <article class="card skill-card">
-        <h3>◇ Web Development</h3>
-        <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>React — if proficient</li></ul>
-      </article>
-      <article class="card skill-card">
-        <h3>▤ Databases</h3>
-        <ul><li>MySQL</li><li>SQLite</li><li>Firebase — if familiar</li></ul>
-      </article>
-      <article class="card skill-card">
-        <h3>⚙ Tools</h3>
-        <ul><li>Git & GitHub</li><li>VS Code</li><li>Linux — if familiar</li></ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="container">
-    <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
-    <p class="section-subtitle">Replace these examples with your real projects and repository links.</p>
-    <div class="project-toolbar" role="group" aria-label="Filter projects">
-      <button class="filter active" data-filter="all" aria-pressed="true">All</button>
-      <button class="filter" data-filter="web" aria-pressed="false">Web Development</button>
-      <button class="filter" data-filter="software" aria-pressed="false">Software</button>
-      <button class="filter" data-filter="ai" aria-pressed="false">AI / ML</button>
-      <button class="filter" data-filter="mobile" aria-pressed="false">Mobile</button>
-      <button class="filter" data-filter="other" aria-pressed="false">Other</button>
-    </div>
-    <div class="grid projects-grid" id="project-list">
-      <article class="card project-card" data-category="mobile">
-        <div class="project-visual" role="img" aria-label="Mobile application placeholder">📱</div>
-        <h3>Smart Campus Assistance</h3>
-        <p>A proposed campus application to make university information and student services easier to access.</p>
-        <div><span class="tag">Android</span><span class="tag">Kotlin</span><span class="tag">Database</span></div>
-        <div class="project-actions">
-          <a class="btn btn-secondary repo-link" href="https://github.com/mulukenamaru">GitHub ↗</a>
-          <a class="btn btn-primary demo-link" href="#contact">Project Details</a>
+      <div class="about-grid">
+        <div class="panel">
+          <h3>My Introduction</h3>
+          <p>
+            I study Computer Science at the University of Gondar (UOG).
+            I am particularly interested in networking and system administration.
+            I want to improve my practical skills in network configuration,
+            operating systems, server management, and troubleshooting.
+          </p>
+          <p>
+            My goal is to keep learning and build a strong technical foundation
+            through projects and real-world practice.
+          </p>
         </div>
-      </article>
-      <article class="card project-card" data-category="software">
-        <div class="project-visual" role="img" aria-label="Student management software placeholder">💻</div>
-        <h3>[Your Project Name]</h3>
-        <p>Describe a software project you built, the problem it solves, and what you learned.</p>
-        <div><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Database</span></div>
-        <div class="project-actions">
-          <a class="btn btn-secondary repo-link" href="https://github.com/mulukenamaru">GitHub ↗</a>
-          <a class="btn btn-primary demo-link" href="#contact">Project Details</a>
-        </div>
-      </article>
-      <article class="card project-card" data-category="web">
-        <div class="project-visual" role="img" aria-label="Portfolio website placeholder">🌐</div>
-        <h3>Personal Portfolio</h3>
-        <p>A responsive website presenting my background, skills, projects, and learning journey.</p>
-        <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-        <div class="project-actions">
-          <a class="btn btn-secondary repo-link" href="https://github.com/mulukenamaru">GitHub ↗</a>
-          <a class="btn btn-primary demo-link" href="#home">Live Demo</a>
-        </div>
-      </article>
-    </div>
-    <p class="muted" id="filter-status" aria-live="polite"></p>
-  </div>
-</section>
 
-<section id="education">
-  <div class="container grid two-columns">
-    <div>
-      <h2 class="section-title">Education</h2>
-      <p class="section-subtitle">My academic journey.</p>
-      <div class="timeline">
-        <article class="timeline-item">
-          <h3>University of Gondar</h3>
-          <p class="muted">Computer Science</p>
-          <p>Degree: [Your exact degree]</p>
-          <p>Expected graduation: [Year]</p>
-          <p>Relevant coursework: Data Structures, Algorithms, Databases, Networking, Software Engineering.</p>
+        <div class="panel facts">
+          <div class="fact">
+            <strong>Education</strong>
+            <span>Computer Science — University of Gondar</span>
+          </div>
+          <div class="fact">
+            <strong>Main Interests</strong>
+            <span>Networking and System Administration</span>
+          </div>
+          <div class="fact">
+            <strong>Email</strong>
+            <span><a href="mailto:mulukenamaru74@gmail.com">mulukenamaru74@gmail.com</a></span>
+          </div>
+          <div class="fact">
+            <strong>Phone</strong>
+            <span><a href="tel:+251918511548">0918511548</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="container">
+      <div class="eyebrow">What I Like</div>
+      <h2 class="section-title">Technical <span class="gold">Interests</span></h2>
+      <p class="section-intro">The technology areas I am most interested in learning and practicing.</p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">⌘</div>
+          <h3>Computer Networking</h3>
+          <p>Learning IP addressing, subnetting, routing, switching, VLANs, and network troubleshooting.</p>
         </article>
-        <article class="timeline-item">
-          <h3>Certifications & Courses</h3>
-          <p class="muted">Add completed courses and verified certificates here.</p>
+
+        <article class="card">
+          <div class="card-icon">▣</div>
+          <h3>System Administration</h3>
+          <p>Exploring operating systems, users and permissions, services, server setup, and system maintenance.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">◇</div>
+          <h3>Network Security</h3>
+          <p>Learning secure configurations, access control, and basic methods for protecting computer systems.</p>
         </article>
       </div>
     </div>
-    <div id="experience">
-      <h2 class="section-title">Experience</h2>
-      <p class="section-subtitle">Learning through practice.</p>
-      <div class="card">
-        <h3>Currently Building Experience</h3>
-        <p class="muted">
-          I am strengthening my practical skills through coursework, independent
-          projects, and continuous learning. I am looking for opportunities to
-          collaborate, contribute, and grow as a developer.
-        </p>
-        <p class="accent">Open to suitable learning and project opportunities.</p>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="eyebrow">My Toolkit</div>
+      <h2 class="section-title">Skills &amp; <span class="gold">Learning Topics</span></h2>
+      <p class="section-intro">
+        Update these topics as you gain experience. Keep only the skills and tools you have actually practiced.
+      </p>
+      <div class="skills">
+        <span class="skill">Networking Fundamentals</span>
+        <span class="skill">IP Addressing</span>
+        <span class="skill">Subnetting</span>
+        <span class="skill">VLAN Concepts</span>
+        <span class="skill">Cisco Packet Tracer</span>
+        <span class="skill">Linux Fundamentals</span>
+        <span class="skill">Windows Administration</span>
+        <span class="skill">Troubleshooting</span>
+        <span class="skill">Java</span>
+        <span class="skill">HTML &amp; CSS</span>
+        <span class="skill">Git &amp; GitHub</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="certifications">
-  <div class="container">
-    <h2 class="section-title">Certifications</h2>
-    <p class="section-subtitle">Only add certificates you have actually earned.</p>
-    <div class="grid two-columns">
-      <article class="card">
-        <h3>[Certificate Name]</h3>
-        <p class="muted">Organization: [Provider]</p>
-        <p>Date: [Month, Year]</p>
-        <a class="accent" href="#contact">Add credential link ↗</a>
-      </article>
-      <article class="card">
-        <h3>[Course or Certificate Name]</h3>
-        <p class="muted">Organization: [Provider]</p>
-        <p>Date: [Month, Year]</p>
-        <a class="accent" href="#contact">Add credential link ↗</a>
-      </article>
-    </div>
-  </div>
-</section>
+  <section id="projects">
+    <div class="container">
+      <div class="eyebrow">My Work</div>
+      <h2 class="section-title">Selected <span class="gold">Projects</span></h2>
+      <p class="section-intro">Starter ideas for showcasing your work. Replace these examples with your actual projects.</p>
 
-<section id="github">
-  <div class="container">
-    <h2 class="section-title">GitHub & <span class="accent">Coding Activity</span></h2>
-    <p class="section-subtitle">Explore my code and follow my progress.</p>
-    <div class="github-panel">
-      <article class="card">
-        <h3>⌘ GitHub Profile</h3>
-        <p class="muted">Browse my repositories, code, and ongoing projects.</p>
-        <a class="btn btn-primary" href="https://github.com/mulukenamaru"
-          target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a>
-        <div class="stats-grid">
-          <div class="stat"><strong>Projects</strong><span class="muted">Explore profile</span></div>
-          <div class="stat"><strong>Code</strong><span class="muted">View repositories</span></div>
-          <div class="stat"><strong>Growth</strong><span class="muted">Keep learning</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Contribution Activity</h3>
-        <p class="muted">Decorative preview only; this grid is not live GitHub data.</p>
-        <div class="contribution" id="contribution-grid" aria-hidden="true"></div>
-        <p class="muted">For verified activity, link to your real GitHub profile.</p>
-      </article>
-    </div>
-  </div>
-</section>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">⌘</div>
+          <h3>Network Lab Practice</h3>
+          <p>Practice network topologies, IP addressing, VLAN configuration, and connectivity testing.</p>
+          <p><a href="https://github.com/mulukenamaru" target="_blank" rel="noopener">Visit my GitHub ↗</a></p>
+        </article>
 
-<section id="contact">
-  <div class="container">
-    <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
-    <p class="section-subtitle">Have a project, opportunity, or idea? Get in touch.</p>
-    <div class="contact-grid">
-      <form id="contact-form">
-        <div>
-          <label for="name">Your name</label>
-          <input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="Enter your name">
-        </div>
-        <div>
-          <label for="email">Your email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="you@example.com">
-        </div>
-        <div>
-          <label for="subject">Subject</label>
-          <input id="subject" name="subject" required maxlength="150" placeholder="What would you like to discuss?">
-        </div>
-        <div>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required minlength="10" maxlength="3000" placeholder="Write your message..."></textarea>
-        </div>
-        <button class="btn btn-primary" type="submit">✉ Prepare Email</button>
-        <p id="form-status" role="status" aria-live="polite"></p>
-      </form>
-      <aside class="card">
-        <h3>Contact Information</h3>
-        <p class="muted">Email</p>
-        <a class="accent" href="#contact" id="email-display">[YOUR EMAIL]</a>
-        <p class="muted">GitHub</p>
-        <a class="accent" href="https://github.com/mulukenamaru"
-          target="_blank" rel="noopener noreferrer">github.com/mulukenamaru ↗</a>
-        <p class="muted">LinkedIn</p>
-        <a class="accent" href="#contact">[YOUR LINKEDIN URL]</a>
-        <p class="muted">Replace the email and LinkedIn placeholders in the code before publishing.</p>
-      </aside>
+        <article class="card">
+          <div class="card-icon">▣</div>
+          <h3>System Administration Notes</h3>
+          <p>A collection of notes and practice tasks about operating systems and system configuration.</p>
+          <p><a href="https://github.com/mulukenamaru" target="_blank" rel="noopener">Visit my GitHub ↗</a></p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">✦</div>
+          <h3>Personal Portfolio</h3>
+          <p>A responsive personal website built with HTML, CSS, and JavaScript.</p>
+          <p><a href="https://github.com/mulukenamaru" target="_blank" rel="noopener">Visit my GitHub ↗</a></p>
+        </article>
+      </div>
+      <p style="color:var(--muted);font-size:13px;margin-top:18px">
+        Note: The project cards are examples. Replace their descriptions and links with your real projects.
+      </p>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="eyebrow">Get in Touch</div>
+      <h2 class="section-title">Let's <span class="gold">Connect.</span></h2>
+      <p class="section-intro">Contact me about learning, collaboration, networking, or system administration.</p>
+
+      <div class="contact-grid">
+        <div class="panel contact-list">
+          <div class="contact-item">
+            <strong>Email</strong>
+            <span><a href="mailto:mulukenamaru74@gmail.com">mulukenamaru74@gmail.com</a></span>
+          </div>
+          <div class="contact-item">
+            <strong>Phone</strong>
+            <span><a href="tel:+251918511548">0918511548</a></span>
+          </div>
+          <div class="contact-item">
+            <strong>GitHub</strong>
+            <span><a href="https://github.com/mulukenamaru" target="_blank" rel="noopener">github.com/mulukenamaru</a></span>
+          </div>
+          <div class="contact-item">
+            <strong>University</strong>
+            <span>University of Gondar (UOG), Ethiopia</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <form id="contactForm">
+            <label>
+              Your name
+              <input id="senderName" required placeholder="Enter your name">
+            </label>
+            <label>
+              Your email
+              <input id="senderEmail" type="email" required placeholder="you@example.com">
+            </label>
+            <label>
+              Message
+              <textarea id="senderMessage" required placeholder="Write your message..."></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Send Email ↗</button>
+            <small style="color:var(--muted)">
+              This opens your email app to send the message.
+            </small>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="container">
-    <span>© <span id="year"></span> Muluken Melkie. All rights reserved.</span>
-    <a href="#home">Back to top ↑</a>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Muluken Melkie</span>
+    <span>Modern Dark · <span class="gold">Black &amp; Gold</span></span>
   </div>
 </footer>
 
 <script>
-"use strict";
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
 
-// Update this value to your real email before using the contact form.
-const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
-
-const menuButton = document.getElementById("menu-toggle");
-const navigation = document.getElementById("navigation");
-
-menuButton.addEventListener("click", () => {
-  const isOpen = navigation.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
-  menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
-});
-
-navigation.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navigation.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
+  menuBtn.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(open));
   });
-});
 
-// Highlight the navigation link for the section currently in view.
-const sections = document.querySelectorAll("main section[id]");
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      navigation.querySelectorAll("a").forEach(link => {
-        const active = link.getAttribute("href") === "#" + entry.target.id;
-        link.classList.toggle("active", active);
-        if (active) link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
-      });
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
     });
-  }, { rootMargin: "-25% 0px -65% 0px" });
-  sections.forEach(section => observer.observe(section));
-}
-
-// Light and dark mode toggle.
-document.getElementById("theme-toggle").addEventListener("click", () => {
-  document.body.classList.toggle("light");
-  const light = document.body.classList.contains("light");
-  document.getElementById("theme-toggle").textContent = light ? "☾" : "☼";
-  document.getElementById("theme-toggle").setAttribute(
-    "aria-label", light ? "Switch to dark theme" : "Switch to light theme"
-  );
-});
-
-// Filter project cards by category.
-const filterButtons = document.querySelectorAll(".filter");
-const projectCards = document.querySelectorAll(".project-card");
-const filterStatus = document.getElementById("filter-status");
-
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const category = button.dataset.filter;
-    let count = 0;
-    filterButtons.forEach(item => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-    projectCards.forEach(card => {
-      const show = category === "all" || card.dataset.category === category;
-      card.hidden = !show;
-      if (show) count++;
-    });
-    filterStatus.textContent = count + (count === 1 ? " project shown." : " projects shown.");
   });
-});
 
-// Generate a decorative contribution grid. It does not represent real statistics.
-const contributionGrid = document.getElementById("contribution-grid");
-for (let i = 0; i < 84; i++) {
-  const cell = document.createElement("span");
-  contributionGrid.appendChild(cell);
-}
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-// Create a simple downloadable CV template. Replace it with your real CV when ready.
-document.getElementById("download-cv").addEventListener("click", () => {
-  const cv = [
-    "MULUKEN MELKIE",
-    "Computer Science Student",
-    "",
-    "Education",
-    "University of Gondar",
-    "Degree: [Add your exact degree and graduation year]",
-    "",
-    "Technical Skills",
-    "[List only skills you can demonstrate]",
-    "",
-    "Projects",
-    "[Add your real project names, descriptions, and links]",
-    "",
-    "Contact",
-    "Email: [YOUR EMAIL]",
-    "GitHub: https://github.com/mulukenamaru",
-    "LinkedIn: [YOUR LINKEDIN URL]",
-    "",
-    "Please replace all bracketed placeholders with accurate information."
-  ].join("\\n");
-  const blob = new Blob([cv], { type: "text/plain;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const download = document.createElement("a");
-  download.href = url;
-  download.download = "Muluken-Melkie-CV.txt";
-  document.body.appendChild(download);
-  download.click();
-  download.remove();
-  URL.revokeObjectURL(url);
-});
+  document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-// Contact form validation. Opens the user's email app; no message is stored on a server.
-document.getElementById("contact-form").addEventListener("submit", event => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const status = document.getElementById("form-status");
+    const name = document.getElementById("senderName").value.trim();
+    const email = document.getElementById("senderEmail").value.trim();
+    const message = document.getElementById("senderMessage").value.trim();
 
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    status.textContent = "Please complete all fields correctly.";
-    return;
-  }
+    const subject = encodeURIComponent("Portfolio message from " + name);
+    const body = encodeURIComponent(
+      "Name: " + name + "\nEmail: " + email + "\n\n" + message
+    );
 
-  if (CONTACT_EMAIL === "YOUR_EMAIL@example.com") {
-    status.textContent = "Please add your real email in CONTACT_EMAIL in the code first.";
-    return;
-  }
-
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const subject = document.getElementById("subject").value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  if (!name || !email || !subject || message.length < 10) {
-    status.textContent = "Please check your details and message.";
-    return;
-  }
-
-  const body = "From: " + name + "\\nReply email: " + email + "\\n\\n" + message;
-  const mailto = "mailto:" + CONTACT_EMAIL +
-    "?subject=" + encodeURIComponent(subject) +
-    "&body=" + encodeURIComponent(body);
-
-  status.textContent = "Opening your email application. Send the message there to complete delivery.";
-  window.location.href = mailto;
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
+    window.location.href =
+      "mailto:mulukenamaru74@gmail.com?subject=" + subject + "&body=" + body;
+  });
 </script>
+
 </body>
 </html>
