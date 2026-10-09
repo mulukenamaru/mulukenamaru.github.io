@@ -4,20 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Muluken Melkie's Computer Science portfolio at the University of Gondar. Networking, system administration, web and software development.">
-  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Muluken Melkie's Computer Science portfolio at the University of Gondar.">
   <title>Muluken Melkie | Portfolio</title>
 
   <style>
     :root {
       --bg: #080808;
-      --card: #121212;
-      --card-hover: #191919;
+      --card: #131313;
       --gold: #d4af37;
-      --gold-light: #f4d978;
+      --light-gold: #f3d978;
       --white: #f5f5f5;
-      --muted: #b5b5b5;
-      --border: rgba(212, 175, 55, 0.25);
+      --muted: #bdbdbd;
+      --border: rgba(212, 175, 55, 0.28);
     }
 
     * {
@@ -28,7 +26,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 85px;
+      scroll-padding-top: 90px;
     }
 
     body {
@@ -39,13 +37,13 @@
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     .container {
-      width: min(1120px, 90%);
-      margin: 0 auto;
+      width: min(1100px, 90%);
+      margin: auto;
     }
 
     .gold {
@@ -56,9 +54,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8, 8, 8, 0.96);
+      background: rgba(8, 8, 8, 0.97);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
     }
 
     nav {
@@ -73,7 +70,6 @@
       font-size: 1.35rem;
       font-weight: 800;
       letter-spacing: 1px;
-      white-space: nowrap;
     }
 
     .logo span {
@@ -83,63 +79,60 @@
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 22px;
+      gap: 20px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--muted);
       font-size: 0.9rem;
-      transition: color 0.2s;
     }
 
     .nav-links a:hover {
       color: var(--gold);
     }
 
-    /* Hero section */
-
     .hero {
-      min-height: 86vh;
+      min-height: 85vh;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       align-items: center;
-      gap: 55px;
-      padding-top: 65px;
-      padding-bottom: 65px;
+      gap: 50px;
+      padding-top: 60px;
+      padding-bottom: 60px;
     }
 
     .eyebrow {
       color: var(--gold);
-      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 3px;
+      font-size: 0.8rem;
       font-weight: bold;
       margin-bottom: 15px;
     }
 
     h1 {
-      font-size: clamp(2.7rem, 6vw, 4.7rem);
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
       line-height: 1.12;
       margin-bottom: 22px;
     }
 
     .hero-description {
-      max-width: 600px;
       color: var(--muted);
       font-size: 1.05rem;
+      max-width: 600px;
       margin-bottom: 28px;
     }
 
     .buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 13px;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 23px;
+      padding: 12px 22px;
       border: 1px solid var(--gold);
       border-radius: 7px;
       font-weight: bold;
@@ -152,7 +145,7 @@
     }
 
     .btn-primary:hover {
-      background: var(--gold-light);
+      background: var(--light-gold);
       transform: translateY(-2px);
     }
 
@@ -164,70 +157,60 @@
       background: rgba(212, 175, 55, 0.1);
     }
 
-    /* Your original photo: mule.jpg */
-
     .portrait-frame {
       width: 100%;
-      max-width: 360px;
+      max-width: 350px;
       justify-self: center;
       padding: 10px;
       border: 2px solid var(--gold);
-      border-radius: 22px;
-      box-shadow: 0 0 45px rgba(212, 175, 55, 0.14);
-      transform: rotate(2deg);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
     }
 
     .profile-photo {
       display: block;
       width: 100%;
-      height: 430px;
+      height: 420px;
       object-fit: cover;
       object-position: center;
-      border-radius: 14px;
-      transform: rotate(-2deg);
+      border-radius: 12px;
     }
 
-    /* General sections */
-
     section {
-      padding: 85px 0;
+      padding: 80px 0;
     }
 
     .section-heading {
       text-align: center;
-      margin-bottom: 45px;
+      margin-bottom: 42px;
     }
 
     .section-heading h2 {
       font-size: clamp(2rem, 4vw, 2.7rem);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .section-heading > p:last-child {
+    .section-heading p:last-child {
       color: var(--muted);
     }
 
-    /* About */
-
-    .about-content {
+    .about-box {
       max-width: 850px;
-      margin: 0 auto;
-      padding: 32px;
+      margin: auto;
+      padding: 30px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 13px;
     }
 
-    .about-content p {
+    .about-box p {
       color: var(--muted);
-      margin-bottom: 16px;
+      margin-bottom: 15px;
     }
 
-    .about-content p:last-child {
+    .about-box p:last-child {
       margin-bottom: 0;
     }
-
-    /* Skills and project cards */
 
     .grid {
       display: grid;
@@ -236,18 +219,16 @@
     }
 
     .card {
-      padding: 26px;
+      padding: 25px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      transition: transform 0.25s, border-color 0.25s,
-                  background 0.25s;
+      transition: 0.25s;
     }
 
     .card:hover {
       transform: translateY(-5px);
       border-color: var(--gold);
-      background: var(--card-hover);
     }
 
     .card-icon {
@@ -257,8 +238,8 @@
 
     .card h3 {
       color: var(--gold);
-      font-size: 1.15rem;
       margin-bottom: 12px;
+      font-size: 1.15rem;
     }
 
     .card p {
@@ -270,72 +251,58 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 17px;
+      margin-top: 16px;
     }
 
     .tag {
-      padding: 5px 10px;
-      border-radius: 5px;
       background: rgba(212, 175, 55, 0.08);
+      color: var(--light-gold);
       border: 1px solid var(--border);
-      color: var(--gold-light);
-      font-size: 0.78rem;
+      border-radius: 5px;
+      padding: 4px 9px;
+      font-size: 0.8rem;
     }
 
-    /* Education */
-
     .education {
-      max-width: 760px;
-      margin: 0 auto;
+      max-width: 750px;
+      margin: auto;
       padding: 30px;
       background: var(--card);
       border-left: 4px solid var(--gold);
       border-radius: 8px;
     }
 
-    .education h3 {
-      margin-bottom: 8px;
-    }
-
     .education p {
       color: var(--muted);
-      margin-top: 6px;
+      margin-top: 7px;
     }
 
-    /* Contact */
-
-    .contact-card {
-      max-width: 720px;
-      margin: 0 auto;
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
       padding: 35px;
       text-align: center;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 13px;
     }
 
-    .contact-card h3 {
-      margin-bottom: 8px;
-    }
-
-    .contact-card p {
+    .contact-box p {
       color: var(--muted);
-      margin-bottom: 23px;
+      margin: 12px 0 22px;
     }
 
     .contact-links {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
     }
 
-    /* Footer */
-
     footer {
-      padding: 25px 0;
-      text-align: center;
       border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
     }
@@ -344,25 +311,32 @@
       color: var(--gold);
     }
 
-    /* Responsive design */
-
     @media (max-width: 800px) {
       nav {
-        padding: 14px 0;
         flex-direction: column;
+        justify-content: center;
+        padding: 14px 0;
       }
 
       .nav-links {
         justify-content: center;
-        gap: 12px 18px;
+        gap: 10px 16px;
       }
 
       .hero {
-        min-height: auto;
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 38px;
-        padding-top: 55px;
+        gap: 35px;
+        padding-top: 45px;
+      }
+
+      .portrait-frame {
+        grid-row: 1;
+        max-width: 285px;
+      }
+
+      .profile-photo {
+        height: 350px;
       }
 
       .hero-description {
@@ -372,15 +346,6 @@
 
       .buttons {
         justify-content: center;
-      }
-
-      .portrait-frame {
-        grid-row: 1;
-        max-width: 290px;
-      }
-
-      .profile-photo {
-        height: 350px;
       }
 
       .grid {
@@ -394,24 +359,12 @@
       }
 
       section {
-        padding: 60px 0;
+        padding: 58px 0;
       }
 
-      .about-content,
-      .contact-card {
-        padding: 23px;
-      }
-
-      .nav-links {
-        gap: 8px 13px;
-      }
-
-      .nav-links a {
-        font-size: 0.82rem;
-      }
-
-      h1 {
-        font-size: 2.7rem;
+      .about-box,
+      .contact-box {
+        padding: 22px;
       }
     }
   </style>
@@ -419,9 +372,8 @@
 
 <body>
 
-  <!-- Navigation -->
   <header>
-    <nav class="container" aria-label="Main navigation">
+    <nav class="container">
       <a href="#home" class="logo">MULUKEN<span>.</span></a>
 
       <ul class="nav-links">
@@ -437,7 +389,6 @@
 
   <main>
 
-    <!-- Home -->
     <section class="container hero" id="home">
       <div>
         <p class="eyebrow">Computer Science Student</p>
@@ -449,71 +400,64 @@
 
         <p class="hero-description">
           I am a Computer Science student at the University of Gondar,
-          College of Informatics. I am passionate about networking,
-          system administration, web development, and software
-          development. I enjoy learning technology and building
-          practical solutions to real-world problems.
+          College of Informatics. My technical interests include
+          networking, system administration, web development, and
+          software development. I am committed to continuous learning
+          and developing practical technology skills.
         </p>
 
         <div class="buttons">
-          <a href="#projects" class="btn btn-primary">
-            Explore My Projects
-          </a>
-
-          <a href="#contact" class="btn btn-outline">
-            Contact Me
-          </a>
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
         </div>
       </div>
 
       <div class="portrait-frame">
         <img
-          src="mule.jpg"
+          src="./mule.jpg"
           alt="Muluken Melkie"
           class="profile-photo"
         >
       </div>
     </section>
 
-    <!-- About -->
     <section id="about">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Get to Know Me</p>
           <h2>About <span class="gold">Me</span></h2>
-          <p>My background, interests, and professional goals.</p>
+          <p>My background and professional goals.</p>
         </div>
 
-        <div class="about-content">
+        <div class="about-box">
           <p>
-            My name is Muluken Melkie. I am a Computer Science student
-            at the University of Gondar, College of Informatics.
+            My name is Muluken Melkie. I study Computer Science at
+            the University of Gondar, College of Informatics.
           </p>
 
           <p>
-            My main areas of interest are computer networking, system
-            administration, web development, and software development.
-            I am working to improve my programming, technical
-            troubleshooting, and problem-solving skills.
+            I am interested in how computer systems, networks, and
+            software applications work. My focus areas include
+            networking, system administration, web development,
+            and software development.
           </p>
 
           <p>
-            My goal is to become a skilled IT professional who can
-            design, develop, configure, and maintain reliable
-            technology solutions. I believe in continuous learning,
-            practical experience, and professional growth.
+            My goal is to develop strong technical skills, build
+            useful projects, and grow into a capable IT professional.
+            I value problem-solving, practical experience, and
+            continuous improvement.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">My Technical Interests</p>
-          <h2>Skills &amp; <span class="gold">Expertise</span></h2>
-          <p>The technical areas I am studying and developing.</p>
+          <h2>Skills &amp; <span class="gold">Interests</span></h2>
+          <p>Areas in which I am developing my knowledge and abilities.</p>
         </div>
 
         <div class="grid">
@@ -522,14 +466,14 @@
             <div class="card-icon">🌐</div>
             <h3>Networking</h3>
             <p>
-              Learning network fundamentals, IP addressing,
-              subnetting, network configuration, and troubleshooting.
+              Learning IP addressing, subnetting, network
+              configuration, connectivity, and troubleshooting.
             </p>
             <div class="tags">
               <span class="tag">TCP/IP</span>
               <span class="tag">Subnetting</span>
               <span class="tag">VLANs</span>
-              <span class="tag">Cisco Packet Tracer</span>
+              <span class="tag">Packet Tracer</span>
             </div>
           </article>
 
@@ -537,7 +481,7 @@
             <div class="card-icon">🖥️</div>
             <h3>System Administration</h3>
             <p>
-              Exploring operating systems, system configuration,
+              Exploring operating systems, configuration,
               user management, maintenance, and troubleshooting.
             </p>
             <div class="tags">
@@ -551,8 +495,8 @@
             <div class="card-icon">💻</div>
             <h3>Web Development</h3>
             <p>
-              Learning to build responsive websites with structured
-              layouts, styling, and interactive functionality.
+              Learning to create responsive websites with
+              structured layouts and modern styling.
             </p>
             <div class="tags">
               <span class="tag">HTML</span>
@@ -565,7 +509,7 @@
             <div class="card-icon">⚙️</div>
             <h3>Software Development</h3>
             <p>
-              Practicing programming logic, object-oriented
+              Practicing programming fundamentals, object-oriented
               programming, debugging, and application development.
             </p>
             <div class="tags">
@@ -580,12 +524,12 @@
             <h3>Database Fundamentals</h3>
             <p>
               Studying data organization, database design,
-              data storage, and information retrieval.
+              storage, and information retrieval.
             </p>
             <div class="tags">
               <span class="tag">SQL</span>
-              <span class="tag">Database Design</span>
               <span class="tag">SQLite</span>
+              <span class="tag">Database Design</span>
             </div>
           </article>
 
@@ -593,8 +537,8 @@
             <div class="card-icon">📱</div>
             <h3>Mobile Development</h3>
             <p>
-              Exploring Android application development, user
-              interfaces, and mobile data storage.
+              Exploring Android applications, user interfaces,
+              and mobile data storage.
             </p>
             <div class="tags">
               <span class="tag">Android</span>
@@ -607,13 +551,12 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">My Work</p>
-          <h2>Featured <span class="gold">Projects</span></h2>
-          <p>Projects that demonstrate my learning and practical skills.</p>
+          <p class="eyebrow">Learning Through Practice</p>
+          <h2>My <span class="gold">Projects</span></h2>
+          <p>Examples of projects and technical practice.</p>
         </div>
 
         <div class="grid">
@@ -622,8 +565,8 @@
             <div class="card-icon">🎓</div>
             <h3>Smart Campus Assistance</h3>
             <p>
-              A campus assistance application concept intended to help
-              university students access useful campus information
+              A campus assistance application concept designed to
+              help students access useful university information
               and services.
             </p>
             <div class="tags">
@@ -637,7 +580,7 @@
             <div class="card-icon">🔌</div>
             <h3>Network Configuration Lab</h3>
             <p>
-              A networking practice project focused on IP addressing,
+              Networking practice involving IP addressing,
               subnetting, VLAN configuration, and connectivity testing.
             </p>
             <div class="tags">
@@ -651,7 +594,7 @@
             <div class="card-icon">🌍</div>
             <h3>Personal Portfolio</h3>
             <p>
-              A responsive personal website presenting my academic
+              A responsive portfolio website presenting my
               background, technical interests, and project work.
             </p>
             <div class="tags">
@@ -665,19 +608,18 @@
                 href="https://github.com/mulukenamaru"
                 target="_blank"
                 rel="noopener noreferrer"
-              >Visit my GitHub →</a>
+              >My GitHub Profile →</a>
             </p>
           </article>
 
         </div>
 
         <p style="color: var(--muted); text-align: center; margin-top: 25px;">
-          Update these descriptions to match your actual completed projects.
+          Update these descriptions to reflect your actual project progress.
         </p>
       </div>
     </section>
 
-    <!-- Education -->
     <section id="education">
       <div class="container">
         <div class="section-heading">
@@ -688,12 +630,8 @@
         <div class="education">
           <p class="eyebrow">University Education</p>
           <h3>Computer Science</h3>
-          <p>
-            <strong>University:</strong> University of Gondar (UOG)
-          </p>
-          <p>
-            <strong>College:</strong> College of Informatics
-          </p>
+          <p><strong>University:</strong> University of Gondar (UOG)</p>
+          <p><strong>College:</strong> College of Informatics</p>
           <p>
             <strong>Interests:</strong> Networking, System
             Administration, Web Development, and Software Development
@@ -702,16 +640,15 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Let's Connect</p>
           <h2>Contact <span class="gold">Me</span></h2>
-          <p>Connect with me about technology, learning, and projects.</p>
+          <p>Connect with me about technology and projects.</p>
         </div>
 
-        <div class="contact-card">
+        <div class="contact-box">
           <h3>Muluken Melkie</h3>
           <p>
             Computer Science Student<br>
@@ -722,18 +659,14 @@
             <a
               class="btn btn-primary"
               href="mailto:mulukenamaru74@gmail.com"
-            >
-              Email Me
-            </a>
+            >Email Me</a>
 
             <a
               class="btn btn-outline"
               href="https://github.com/mulukenamaru"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              GitHub Profile
-            </a>
+            >GitHub Profile</a>
           </div>
         </div>
       </div>
@@ -741,7 +674,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <p>
