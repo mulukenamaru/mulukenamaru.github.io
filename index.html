@@ -4,18 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0d">
 
   <title>Muluken Melkie | Computer Science Portfolio</title>
-  <meta name="description" content="Portfolio of Muluken Melkie, Computer Science student at the University of Gondar, Ethiopia.">
+  <meta name="description" content="Muluken Melkie, Computer Science student at the University of Gondar, Ethiopia. Explore my skills, projects, and technical interests.">
 
   <style>
     :root {
-      --bg: #0b0b0b;
-      --card: #171717;
-      --gold: #d4af37;
-      --white: #ffffff;
-      --muted: #b8b8b8;
-      --border: #353535;
+      --bg: #0b0b0d;
+      --surface: #141418;
+      --surface-light: #1b1b21;
+      --gold: #d6b45a;
+      --gold-light: #f0d88b;
+      --white: #f7f7f8;
+      --muted: #b5b5bf;
+      --border: rgba(214, 180, 90, 0.25);
+      --radius: 16px;
+      --max-width: 1120px;
     }
 
     * {
@@ -26,262 +31,693 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 95px;
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--white);
       line-height: 1.7;
     }
 
     a {
-      color: var(--gold);
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      opacity: 0.8;
+    button {
+      font: inherit;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #111111;
-      border-bottom: 1px solid var(--gold);
-      padding: 16px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    button, a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .logo {
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
       color: var(--gold);
-      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
       font-weight: bold;
-    }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--white);
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: var(--gold);
-    }
-
-    section {
-      padding: 75px 8%;
-      scroll-margin-top: 75px;
-    }
-
-    h2 {
-      color: var(--gold);
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
-
-    h3 {
       margin-bottom: 10px;
     }
 
-    p {
-      color: var(--muted);
-      margin-bottom: 14px;
+    h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.25;
+      margin-bottom: 12px;
     }
 
-    .hero {
-      min-height: 80vh;
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    /* NAVIGATION */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 13, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 78px;
       display: flex;
       align-items: center;
-      gap: 45px;
-      flex-wrap: wrap;
-      background: radial-gradient(
-        ellipse at top right,
-        #302711 0%,
-        #0b0b0b 55%
-      );
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .hero-content {
-      flex: 1;
-      min-width: 270px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      color: var(--gold);
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(145deg, #252016, #101012);
+    }
+
+    .brand-name {
+      display: block;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .brand-subtitle {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    /* BUTTONS */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 9px;
+      background: var(--gold);
+      color: #15130c;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--gold-light);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .button-secondary:hover {
+      background: #211d12;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 100px 0 90px;
+      background:
+        radial-gradient(ellipse at 85% 15%, #302615 0, transparent 36%),
+        var(--bg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      background: rgba(214, 180, 90, 0.06);
+      padding: 7px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+      margin-bottom: 22px;
     }
 
     .hero h1 {
-      font-size: clamp(36px, 6vw, 58px);
-      line-height: 1.2;
-      margin-bottom: 18px;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
     }
 
     .hero h1 span {
+      display: block;
       color: var(--gold);
     }
 
     .hero h3 {
-      color: #dddddd;
-      font-size: 19px;
-      margin-bottom: 18px;
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: normal;
+      color: #e0e0e5;
+      margin-bottom: 17px;
     }
 
-    .hero-image {
-      width: 250px;
-      height: 250px;
-      border: 3px solid var(--gold);
-      border-radius: 50%;
-      object-fit: cover;
-      background: var(--card);
+    .hero-description {
+      max-width: 650px;
+      color: var(--muted);
+      margin-bottom: 25px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      background: var(--gold);
-      color: #111111;
-      border-radius: 6px;
-      font-weight: bold;
-      margin: 12px 10px 0 0;
-      cursor: pointer;
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .btn-outline {
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-    }
-
-    .about-box,
-    .skill-details,
-    .project-card,
-    .education-card,
-    .contact-box {
-      background: var(--card);
+    .profile-card {
+      text-align: center;
+      padding: 24px;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 25px;
+      background: linear-gradient(150deg, #1d1b17, #121215);
+      border-radius: 24px;
     }
+
+    .profile-frame {
+      width: min(100%, 260px);
+      aspect-ratio: 1;
+      margin: 0 auto 20px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      overflow: hidden;
+      background: #211d14;
+      display: grid;
+      place-items: center;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-placeholder {
+      color: var(--gold);
+      font-size: 72px;
+      font-weight: bold;
+    }
+
+    .profile-card h2 {
+      font-size: 21px;
+      margin-bottom: 4px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 0;
+    }
+
+    .profile-university {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .panel {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .panel h3 {
+      margin-bottom: 14px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .interest-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .interest-list li {
+      background: var(--surface-light);
+      border: 1px solid #2c2b30;
+      border-radius: 10px;
+      padding: 13px;
+      color: #e7e7eb;
+      font-size: 13px;
+    }
+
+    .interest-list li span {
+      display: block;
+      color: var(--gold);
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    /* SKILLS */
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 16px;
-      margin: 25px 0;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 30px 0;
     }
 
-    .skill {
-      min-height: 85px;
-      padding: 18px;
+    .skill-button {
+      min-height: 130px;
+      text-align: left;
+      padding: 19px;
+      background: var(--surface);
       color: var(--white);
-      background: var(--card);
-      border: 1px solid #444444;
-      border-radius: 8px;
-      font-size: 16px;
+      border: 1px solid #303036;
+      border-radius: 13px;
       cursor: pointer;
       transition: 0.2s ease;
     }
 
-    .skill:hover,
-    .skill.active {
+    .skill-button:hover,
+    .skill-button.active {
       border-color: var(--gold);
-      background: #292313;
+      background: #201c13;
       transform: translateY(-3px);
     }
 
-    .skill:focus-visible,
-    a:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 4px;
+    .skill-icon {
+      display: block;
+      color: var(--gold);
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .skill-button strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .skill-button small {
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .skill-details {
+      min-height: 225px;
+      padding: 28px;
+      border: 1px solid var(--border);
       border-left: 4px solid var(--gold);
-      min-height: 220px;
+      border-radius: 12px;
+      background: linear-gradient(120deg, #19170f, #141418);
     }
 
     .skill-details h3 {
-      color: var(--gold);
       font-size: 23px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .skill-details p {
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
     .skill-details strong {
       color: var(--white);
     }
 
-    .project-grid {
+    /* PROJECTS */
+
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .project-card {
-      transition: 0.2s ease;
+      padding: 25px;
+      border: 1px solid #303036;
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: 0.2s;
     }
 
     .project-card:hover {
       border-color: var(--gold);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
     }
 
-    .project-card h3,
-    .education-card h3 {
+    .project-number {
       color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .project-card h3 {
+      font-size: 19px;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
     }
 
     .tag {
-      display: inline-block;
-      color: var(--gold);
-      border: 1px solid #695a2d;
+      color: var(--gold-light);
+      background: rgba(214, 180, 90, 0.07);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
       border-radius: 20px;
-      padding: 4px 10px;
-      font-size: 12px;
-      margin: 4px 3px 0 0;
+      font-size: 11px;
     }
 
-    .contact-box a {
-      overflow-wrap: anywhere;
+    /* EDUCATION */
+
+    .education-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
     }
+
+    .education-mark {
+      min-width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-weight: 900;
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+      background: #211d14;
+    }
+
+    .education-card h3 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .education-card p {
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 25px;
+    }
+
+    .contact-info,
+    .contact-main {
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .contact-info h3,
+    .contact-main h3 {
+      margin-bottom: 15px;
+    }
+
+    .contact-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #303036;
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .contact-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      color: var(--gold-light);
+      overflow-wrap: anywhere;
+      font-size: 14px;
+    }
+
+    .contact-value:hover {
+      text-decoration: underline;
+    }
+
+    .contact-main p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
 
     footer {
-      text-align: center;
-      padding: 25px 8%;
       border-top: 1px solid var(--border);
-      background: #111111;
+      padding: 25px 0;
+      background: #09090b;
     }
 
-    footer p {
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p {
+      color: var(--muted);
+      font-size: 12px;
       margin: 0;
     }
 
+    .footer-inner a {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr 0.7fr;
+        gap: 25px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        gap: 13px;
+      }
+    }
+
     @media (max-width: 650px) {
-      header {
-        position: static;
-        padding: 18px 5%;
+      .container {
+        width: min(100% - 30px, var(--max-width));
       }
 
-      nav {
-        gap: 12px;
+      .section {
+        padding: 60px 0;
       }
 
-      section {
-        padding: 50px 5%;
+      .nav {
+        min-height: 72px;
+        flex-wrap: wrap;
+        padding: 12px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        padding: 8px 0 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 14px;
       }
 
       .hero {
-        min-height: auto;
+        padding: 65px 0;
       }
 
-      .hero-image {
-        width: 190px;
-        height: 190px;
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .profile-card {
+        max-width: 360px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .skill-button {
+        padding: 14px;
+        min-height: 120px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .interest-list {
+        grid-template-columns: 1fr;
+      }
+
+      .education-card {
+        padding: 20px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
       }
     }
   </style>
@@ -289,347 +725,550 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <a href="#home" class="logo">Muluken Melkie</a>
+  <!-- HEADER AND WEBSITE BRAND -->
+  <header class="site-header">
+    <div class="container nav">
 
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
+      <a class="brand" href="#home" aria-label="Muluken Melkie home">
+        <span class="brand-mark">UOG</span>
+        <span>
+          <span class="brand-name">Muluken Melkie</span>
+          <span class="brand-subtitle">Computer Science Student</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        Menu ☰
+      </button>
+
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+    </div>
   </header>
 
-  <!-- HOME -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <p>WELCOME TO MY PORTFOLIO</p>
+  <main>
 
-      <h1>Hello, I'm <span>Muluken Melkie</span></h1>
+    <!-- HOME -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
 
-      <h3>Computer Science Student | University of Gondar</h3>
+        <div>
+          <span class="hero-label">
+            COMPUTER SCIENCE · UNIVERSITY OF GONDAR
+          </span>
 
-      <p>
-        I am a Computer Science student interested in building
-        useful technology solutions. My areas of interest include
-        networking, system administration, web development,
-        and software development.
-      </p>
+          <h1>
+            Hello, I'm
+            <span>Muluken Melkie.</span>
+          </h1>
 
-      <a href="#skills" class="btn">Explore My Skills</a>
-      <a href="#contact" class="btn btn-outline">Contact Me</a>
-    </div>
+          <h3>Building my future through technology.</h3>
 
-    <img
-      src="./mule.jpg"
-      alt="Muluken Melkie profile photo"
-      class="hero-image"
-      onerror="this.style.display='none'"
-    >
-  </section>
+          <p class="hero-description">
+            I am a Computer Science student at the University of
+            Gondar, Ethiopia. I am developing my knowledge in web
+            development, software development, networking, databases,
+            and system administration.
+          </p>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
+          <div class="hero-actions">
+            <a class="button" href="#projects">Explore My Projects ↗</a>
+            <a class="button button-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
 
-    <div class="about-box">
-      <p>
-        My name is Muluken Melkie. I am a Computer Science
-        student at the University of Gondar (UOG), Ethiopia.
-      </p>
+        <aside class="profile-card">
+          <div class="profile-frame">
+            <img
+              src="./mule.jpg"
+              alt="Muluken Melkie"
+              onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"
+            >
+            <div class="profile-placeholder" hidden>MM</div>
+          </div>
 
-      <p>
-        I am learning how software is developed, how computer
-        networks communicate, how databases store information,
-        and how operating systems manage computer resources.
-      </p>
+          <h2>Muluken Melkie</h2>
+          <p>Computer Science Student</p>
+          <div class="profile-university">
+            UNIVERSITY OF GONDAR · ETHIOPIA
+          </div>
+        </aside>
 
-      <p>
-        My goal is to improve my practical skills by building
-        projects, solving technical problems, and learning new
-        technologies.
-      </p>
+      </div>
+    </section>
 
-      <span class="tag">Problem Solving</span>
-      <span class="tag">Technology</span>
-      <span class="tag">Continuous Learning</span>
-    </div>
-  </section>
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
 
-  <!-- INTERACTIVE SKILLS -->
-  <section id="skills">
-    <h2>My Technical Skills</h2>
+        <div class="section-heading">
+          <p class="eyebrow">Get to know me</p>
+          <h2>About <span class="gold">Me</span></h2>
+          <p class="section-intro">
+            My background, interests, and the technical areas
+            I am working to improve.
+          </p>
+        </div>
 
-    <p>
-      Click any skill below to learn what it means, its key
-      concepts, and a practical example.
-    </p>
+        <div class="about-grid">
 
-    <div class="skills-grid">
-      <button class="skill" data-skill="web" aria-pressed="false">
-        Web Development
-      </button>
+          <article class="panel">
+            <h3>My Background</h3>
 
-      <button class="skill" data-skill="software" aria-pressed="false">
-        Software Development
-      </button>
+            <p>
+              My name is Muluken Melkie. I study Computer Science
+              at the University of Gondar in Ethiopia.
+            </p>
 
-      <button class="skill" data-skill="network" aria-pressed="false">
-        Computer Networking
-      </button>
+            <p>
+              I am interested in understanding how software works,
+              how networks connect devices, and how computer systems
+              store and manage information.
+            </p>
 
-      <button class="skill" data-skill="system" aria-pressed="false">
-        System Administration
-      </button>
+            <p>
+              My goal is to build practical projects, strengthen my
+              technical abilities, and prepare for a career in technology.
+            </p>
+          </article>
 
-      <button class="skill" data-skill="database" aria-pressed="false">
-        Database Management
-      </button>
+          <article class="panel">
+            <h3>Areas of Interest</h3>
 
-      <button class="skill" data-skill="git" aria-pressed="false">
-        Git and GitHub
-      </button>
+            <ul class="interest-list">
+              <li>
+                <span>01</span>
+                Web Development
+              </li>
+              <li>
+                <span>02</span>
+                Software Development
+              </li>
+              <li>
+                <span>03</span>
+                Computer Networking
+              </li>
+              <li>
+                <span>04</span>
+                System Administration
+              </li>
+              <li>
+                <span>05</span>
+                Databases
+              </li>
+              <li>
+                <span>06</span>
+                Cybersecurity
+              </li>
+            </ul>
+          </article>
 
-      <button class="skill" data-skill="algorithm" aria-pressed="false">
-        Algorithms and Data Structures
-      </button>
+        </div>
+      </div>
+    </section>
 
-      <button class="skill" data-skill="security" aria-pressed="false">
-        Cybersecurity Basics
-      </button>
-    </div>
+    <!-- INTERACTIVE SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
 
-    <div class="skill-details" aria-live="polite">
-      <h3 id="skill-title">Choose a skill</h3>
+        <div class="section-heading">
+          <p class="eyebrow">What I am learning</p>
+          <h2>Technical <span class="gold">Skills</span></h2>
+          <p class="section-intro">
+            Select a skill to see its explanation, important concepts,
+            and a practical example.
+          </p>
+        </div>
 
-      <p id="skill-description">
-        Select any skill card above to see its explanation.
-      </p>
+        <div class="skills-grid">
 
-      <p>
-        <strong>Key concepts:</strong>
-        <span id="skill-concepts">
-          Your selected skill concepts will appear here.
-        </span>
-      </p>
+          <button class="skill-button" data-skill="web" aria-pressed="false">
+            <span class="skill-icon">&lt;/&gt;</span>
+            <strong>Web Development</strong>
+            <small>HTML, CSS, JavaScript</small>
+          </button>
 
-      <p>
-        <strong>Practical example:</strong>
-        <span id="skill-example">
-          A practical example will appear here.
-        </span>
-      </p>
-    </div>
-  </section>
+          <button class="skill-button" data-skill="software" aria-pressed="false">
+            <span class="skill-icon">{ }</span>
+            <strong>Software Development</strong>
+            <small>Programming and OOP</small>
+          </button>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>My Projects</h2>
+          <button class="skill-button" data-skill="network" aria-pressed="false">
+            <span class="skill-icon">↔</span>
+            <strong>Networking</strong>
+            <small>IP, VLANs, routers</small>
+          </button>
 
-    <p>
-      Update these descriptions to reflect your actual project
-      progress and completed work.
-    </p>
+          <button class="skill-button" data-skill="system" aria-pressed="false">
+            <span class="skill-icon">⚙</span>
+            <strong>System Administration</strong>
+            <small>Operating systems</small>
+          </button>
 
-    <div class="project-grid">
+          <button class="skill-button" data-skill="database" aria-pressed="false">
+            <span class="skill-icon">▤</span>
+            <strong>Database Management</strong>
+            <small>Tables, SQL, relationships</small>
+          </button>
 
-      <article class="project-card">
-        <h3>Smart Campus Assistance</h3>
+          <button class="skill-button" data-skill="git" aria-pressed="false">
+            <span class="skill-icon">⌘</span>
+            <strong>Git and GitHub</strong>
+            <small>Version control</small>
+          </button>
 
-        <p>
-          A university application concept designed to help
-          students access campus information and services.
-        </p>
+          <button class="skill-button" data-skill="algorithm" aria-pressed="false">
+            <span class="skill-icon">01</span>
+            <strong>Algorithms and Data Structures</strong>
+            <small>Stacks, queues, arrays</small>
+          </button>
 
-        <span class="tag">Android</span>
-        <span class="tag">Kotlin</span>
-        <span class="tag">Database</span>
-      </article>
+          <button class="skill-button" data-skill="security" aria-pressed="false">
+            <span class="skill-icon">◇</span>
+            <strong>Cybersecurity Basics</strong>
+            <small>Security and access control</small>
+          </button>
 
-      <article class="project-card">
-        <h3>Personal Portfolio Website</h3>
+        </div>
 
-        <p>
-          A responsive website presenting my background,
-          technical interests, skills, and projects.
-        </p>
+        <article class="skill-details" aria-live="polite">
+          <h3 id="skill-title">Explore a technical skill</h3>
 
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-      </article>
+          <p id="skill-description">
+            Click one of the cards above to learn about that skill.
+          </p>
 
-      <article class="project-card">
-        <h3>Networking Lab Practice</h3>
+          <p>
+            <strong>Key concepts:</strong>
+            <span id="skill-concepts">
+              Concepts will appear here.
+            </span>
+          </p>
 
-        <p>
-          Practice exercises involving IP addressing, subnetting,
-          VLAN configuration, and network communication.
-        </p>
+          <p>
+            <strong>Practical example:</strong>
+            <span id="skill-example">
+              An example will appear here.
+            </span>
+          </p>
+        </article>
 
-        <span class="tag">Networking</span>
-        <span class="tag">IP Addressing</span>
-        <span class="tag">Packet Tracer</span>
-      </article>
+      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <h2>Education</h2>
+        <div class="section-heading">
+          <p class="eyebrow">My work</p>
+          <h2>Featured <span class="gold">Projects</span></h2>
+          <p class="section-intro">
+            A selection of project areas. Update the descriptions
+            and links as your work develops.
+          </p>
+        </div>
 
-    <div class="education-card">
-      <h3>University of Gondar (UOG)</h3>
-      <p>Computer Science</p>
-      <p>Gondar, Ethiopia</p>
-    </div>
-  </section>
+        <div class="projects-grid">
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact Me</h2>
+          <article class="project-card">
+            <p class="project-number">PROJECT 01</p>
+            <h3>Smart Campus Assistance</h3>
+            <p>
+              A university application concept intended to help
+              students access campus information and services.
+            </p>
+            <div class="tags">
+              <span class="tag">Android</span>
+              <span class="tag">Kotlin</span>
+              <span class="tag">Database</span>
+            </div>
+          </article>
 
-    <div class="contact-box">
-      <p>
-        Feel free to contact me about technology,
-        software development, projects, or opportunities.
-      </p>
+          <article class="project-card">
+            <p class="project-number">PROJECT 02</p>
+            <h3>Personal Portfolio</h3>
+            <p>
+              A responsive personal website showcasing my
+              background, technical interests, and projects.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </article>
 
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:mulukenamaru74@gmail.com">
-          mulukenamaru74@gmail.com
-        </a>
-      </p>
+          <article class="project-card">
+            <p class="project-number">PROJECT 03</p>
+            <h3>Networking Lab Practice</h3>
+            <p>
+              Practical exercises involving subnetting, IP
+              addressing, VLANs, and network configuration.
+            </p>
+            <div class="tags">
+              <span class="tag">Networking</span>
+              <span class="tag">VLAN</span>
+              <span class="tag">Packet Tracer</span>
+            </div>
+          </article>
 
-      <p>
-        <strong>Phone:</strong>
-        <a href="tel:+251918511548">
-          +251 918511548
-        </a>
-      </p>
+        </div>
+      </div>
+    </section>
 
-      <p>
-        <strong>GitHub:</strong>
-        <a
-          href="https://github.com/mulukenamaru"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          github.com/mulukenamaru
-        </a>
-      </p>
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="container">
 
-      <a class="btn" href="mailto:mulukenamaru74@gmail.com">
-        Send Me an Email
-      </a>
+        <div class="section-heading">
+          <p class="eyebrow">Academic background</p>
+          <h2>My <span class="gold">Education</span></h2>
+        </div>
 
-      <a class="btn btn-outline" href="tel:+251918511548">
-        Call Me
-      </a>
-    </div>
-  </section>
+        <article class="education-card">
+          <div class="education-mark">UOG</div>
+
+          <div>
+            <h3>University of Gondar</h3>
+            <p>Computer Science</p>
+            <p>Gondar, Amhara, Ethiopia</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="eyebrow">Let's connect</p>
+          <h2>Contact <span class="gold">Me</span></h2>
+          <p class="section-intro">
+            Reach out to discuss technology, projects,
+            collaboration, or professional opportunities.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <article class="contact-info">
+            <h3>Contact Information</h3>
+
+            <div class="contact-item">
+              <span class="contact-label">EMAIL ADDRESS</span>
+              <a
+                class="contact-value"
+                href="mailto:mulukenamaru74@gmail.com"
+              >
+                mulukenamaru74@gmail.com
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">PHONE NUMBER</span>
+              <a
+                class="contact-value"
+                href="tel:+251918511548"
+              >
+                +251 918511548
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">GITHUB PROFILE</span>
+              <a
+                class="contact-value"
+                href="https://github.com/mulukenamaru"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/mulukenamaru ↗
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">UNIVERSITY</span>
+              <span class="contact-value">University of Gondar, Ethiopia</span>
+            </div>
+          </article>
+
+          <article class="contact-main">
+            <h3>Have a project in mind?</h3>
+
+            <p>
+              I am interested in learning, building useful
+              technology, and connecting with people who share
+              an interest in computer science.
+            </p>
+
+            <div class="contact-actions">
+              <a
+                class="button"
+                href="mailto:mulukenamaru74@gmail.com?subject=Portfolio%20Inquiry"
+              >
+                Send an Email ↗
+              </a>
+
+              <a
+                class="button button-secondary"
+                href="tel:+251918511548"
+              >
+                Call Me
+              </a>
+
+              <a
+                class="button button-secondary"
+                href="https://github.com/mulukenamaru"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit GitHub ↗
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer>
-    <p>
-      &copy; <span id="year"></span> Muluken Melkie.
-      All rights reserved.
-    </p>
+    <div class="container footer-inner">
+      <p>
+        © <span id="year"></span> Muluken Melkie. All rights reserved.
+      </p>
+
+      <a href="#home">Back to top ↑</a>
+    </div>
   </footer>
 
-  <!-- INTERACTIVE SKILLS SCRIPT -->
+  <!-- INTERACTIVE JAVASCRIPT -->
   <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "Close ✕" : "Menu ☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "Menu ☰";
+      });
+    });
+
+    // Information shown when a skill is selected
     const skills = {
       web: {
         title: "Web Development",
         description:
-          "Web development is the process of creating websites and web applications that run in a browser.",
+          "Web development means creating websites and browser-based applications.",
         concepts:
-          "HTML creates page structure, CSS controls appearance, and JavaScript adds interactive behavior.",
+          "HTML structures content, CSS styles the page, and JavaScript adds interactions.",
         example:
-          "Building this responsive portfolio website with interactive skill cards."
+          "Building a responsive portfolio website with working navigation and clickable skill cards."
       },
 
       software: {
         title: "Software Development",
         description:
-          "Software development involves designing, writing, testing, and maintaining computer programs.",
+          "Software development is the process of designing, writing, testing, and maintaining computer programs.",
         concepts:
-          "Programming logic, variables, functions, classes, debugging, and object-oriented programming.",
+          "Variables, data types, functions, classes, object-oriented programming, debugging, and testing.",
         example:
-          "Creating a student registration application using Java."
+          "Developing a student registration program using Java."
       },
 
       network: {
         title: "Computer Networking",
         description:
-          "Computer networking connects devices so they can exchange data and share resources.",
+          "Networking connects computers and other devices so they can communicate and share resources.",
         concepts:
           "IP addresses, subnet masks, routers, switches, VLANs, DNS, and network protocols.",
         example:
-          "Configuring multiple VLANs and IP addresses in Cisco Packet Tracer."
+          "Configuring IP addresses and multiple VLANs in Cisco Packet Tracer."
       },
 
       system: {
         title: "System Administration",
         description:
-          "System administration involves managing operating systems, computers, users, and services.",
+          "System administration involves maintaining computers, operating systems, accounts, and services.",
         concepts:
-          "User accounts, permissions, software installation, updates, backups, and troubleshooting.",
+          "User accounts, file permissions, software updates, backups, monitoring, and troubleshooting.",
         example:
-          "Creating user accounts and setting file permissions on a computer."
+          "Creating user accounts and managing file permissions on a computer."
       },
 
       database: {
         title: "Database Management",
         description:
-          "Database management organizes information so it can be stored, updated, and retrieved efficiently.",
+          "A database stores organized information so applications can create, retrieve, and update records.",
         concepts:
-          "Tables, SQL, primary keys, foreign keys, relationships, and database queries.",
+          "Tables, rows, columns, SQL, primary keys, foreign keys, and relationships.",
         example:
-          "Designing a database to store student information and course registrations."
+          "Designing a database for student information and course registration."
       },
 
       git: {
         title: "Git and GitHub",
         description:
-          "Git tracks changes in source code, while GitHub hosts repositories for sharing and collaboration.",
+          "Git tracks changes in source code. GitHub hosts repositories and supports collaboration.",
         concepts:
           "Repositories, commits, branches, merges, pushes, and pull requests.",
         example:
-          "Uploading your portfolio source code to GitHub and publishing it with GitHub Pages."
+          "Uploading your portfolio code to GitHub and publishing it with GitHub Pages."
       },
 
       algorithm: {
         title: "Algorithms and Data Structures",
         description:
-          "Algorithms provide steps to solve problems, while data structures organize information for efficient use.",
+          "Algorithms describe steps for solving problems, while data structures organize data for efficient use.",
         concepts:
-          "Arrays, linked lists, stacks, queues, searching, sorting, and algorithm complexity.",
+          "Arrays, linked lists, stacks, queues, searching, sorting, and time complexity.",
         example:
-          "Implementing a stack using an array in Java."
+          "Implementing an array-based stack in Java with push and pop operations."
       },
 
       security: {
         title: "Cybersecurity Basics",
         description:
-          "Cybersecurity helps protect computer systems, networks, and information from unauthorized access and attacks.",
+          "Cybersecurity helps protect computers, networks, and data from unauthorized access and attacks.",
         concepts:
-          "Strong passwords, authentication, access control, software updates, backups, and phishing awareness.",
+          "Authentication, strong passwords, access control, updates, backups, and phishing awareness.",
         example:
-          "Using strong unique passwords and restricting access to sensitive files."
+          "Using unique passwords and restricting access to confidential files."
       }
     };
 
-    const skillButtons = document.querySelectorAll(".skill");
+    const skillButtons = document.querySelectorAll(".skill-button");
 
-    skillButtons.forEach(function(button) {
-      button.addEventListener("click", function() {
+    skillButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
         const selectedSkill = skills[button.dataset.skill];
 
         if (!selectedSkill) return;
@@ -646,7 +1285,7 @@
         document.getElementById("skill-example").textContent =
           selectedSkill.example;
 
-        skillButtons.forEach(function(item) {
+        skillButtons.forEach(function (item) {
           item.classList.remove("active");
           item.setAttribute("aria-pressed", "false");
         });
@@ -656,6 +1295,7 @@
       });
     });
 
+    // Automatically update the copyright year
     document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
