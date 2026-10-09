@@ -4,647 +4,1638 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muluken Melkie | Computer Science Student</title>
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Muluken Melkie — Computer Science student at the University of Gondar, interested in networking, system administration, and IT infrastructure.">
+  <title>Muluken Melkie | Networking & System Administration</title>
 
   <style>
     :root {
       --bg: #080808;
-      --panel: #141414;
+      --surface: #121212;
+      --surface-2: #191919;
       --gold: #d6ad55;
+      --gold-light: #f0d28c;
       --text: #f5f5f5;
       --muted: #b4b4b4;
       --border: #303030;
+      --radius: 14px;
+      --width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 95px;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
       background: var(--bg);
       color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .13;
+      background-image:
+        linear-gradient(rgba(214,173,85,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(214,173,85,.07) 1px, transparent 1px);
+      background-size: 45px 45px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
     }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    button, input, textarea { font: inherit; }
+
+    button { color: inherit; }
+
+    img { max-width: 100%; }
 
     .container {
-      width: min(1100px, 90%);
-      margin: auto;
+      width: min(var(--width), 90%);
+      margin-inline: auto;
     }
 
-    header {
-      border-bottom: 1px solid var(--border);
-      background: #0b0b0b;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+    .gold { color: var(--gold); }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 75px;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: bold;
-    }
-
-    .brand-mark {
-      width: 43px;
-      height: 43px;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-    }
-
-    .brand span:last-child {
-      font-size: 17px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .hero {
-      padding: 95px 0 80px;
-      display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      gap: 55px;
-      align-items: center;
-    }
+    .muted { color: var(--muted); }
 
     .eyebrow {
       color: var(--gold);
       text-transform: uppercase;
       letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 88px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-heading {
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: 1.2;
+      margin: 10px 0 14px;
+      letter-spacing: -1px;
+    }
+
+    .section-intro {
+      max-width: 730px;
+      color: var(--muted);
+      margin: 0 0 32px;
+    }
+
+    .accent-line {
+      width: 62px;
+      height: 3px;
+      background: var(--gold);
+      margin: 18px 0 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 11px 18px;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: transform .2s, background .2s, color .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(214,173,85,.1);
+    }
+
+    .btn.primary {
+      background: var(--gold);
+      color: #101010;
+    }
+
+    .btn.primary:hover { background: var(--gold-light); }
+
+    :focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 4px;
+    }
+
+    /* Header and navigation */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,8,8,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 11px;
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 1px;
+      background: linear-gradient(145deg, #1e1a10, #0b0b0b);
+    }
+
+    .brand-name { line-height: 1.3; }
+
+    .brand-name small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 10px;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
       font-size: 12px;
-      font-weight: bold;
+      transition: color .2s;
     }
 
-    h1 {
-      font-size: clamp(40px, 6vw, 70px);
-      line-height: 1.08;
-      margin: 18px 0;
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold); }
+
+    .nav-contact {
+      border: 1px solid var(--gold);
+      padding: 8px 12px;
+      border-radius: 6px;
     }
 
-    h1 span,
-    .gold {
+    .menu-toggle {
+      display: none;
+      width: 43px;
+      height: 43px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 660px;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 65px;
+      align-items: center;
+      padding-block: 82px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6.4vw, 75px);
+      letter-spacing: -3px;
+      line-height: 1.04;
+      margin: 21px 0;
+    }
+
+    .hero h1 span {
+      display: block;
       color: var(--gold);
     }
 
-    .hero p {
-      max-width: 600px;
+    .hero-description {
       color: var(--muted);
-      margin-bottom: 25px;
+      max-width: 650px;
+      font-size: 16px;
     }
 
-    .buttons {
+    .hero-buttons {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 27px;
     }
 
-    .button {
-      display: inline-block;
-      border: 1px solid var(--gold);
-      padding: 11px 19px;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 14px;
-      transition: 0.2s;
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      padding: 7px 11px;
+      border-radius: 30px;
+      font-size: 11px;
+      margin-top: 25px;
     }
 
-    .button.primary {
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: var(--gold);
-      color: #111;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: 0.85;
-    }
+    .hero-visual { position: relative; }
 
     .profile-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 22px;
-      text-align: center;
+      background: linear-gradient(145deg, #181818, #0d0d0d);
+      border: 1px solid #49402b;
+      padding: 23px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(214,173,85,.15);
+      border-radius: 50%;
+      right: -75px;
+      top: -75px;
+      box-shadow: 0 0 0 25px rgba(214,173,85,.025),
+                  0 0 0 50px rgba(214,173,85,.02);
     }
 
     .profile-photo {
       width: 100%;
-      max-width: 270px;
-      aspect-ratio: 1;
+      aspect-ratio: 4 / 4.2;
       object-fit: cover;
       border-radius: 12px;
-      border: 2px solid var(--gold);
       background: #222;
+      border: 1px solid #514329;
+      position: relative;
+    }
+
+    .photo-placeholder {
+      aspect-ratio: 4 / 4.2;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      border: 1px dashed #514329;
+      background: #111;
+      color: var(--gold);
+      font-size: 60px;
+      font-weight: 800;
     }
 
     .profile-card h2 {
-      margin-top: 16px;
-      font-size: 22px;
+      margin: 17px 0 0;
+      font-size: 23px;
     }
 
     .profile-card p {
       margin: 3px 0;
-      font-size: 14px;
-    }
-
-    section {
-      padding: 65px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .section-title {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .section-intro {
       color: var(--muted);
-      max-width: 700px;
-      margin-bottom: 30px;
+      font-size: 13px;
     }
 
-    .specialty {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 35px;
-    }
-
-    .specialty-item,
-    .card,
-    .skill {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 22px;
-    }
-
-    .specialty-item h3,
-    .card h3 {
+    .profile-label {
+      display: inline-block;
       color: var(--gold);
-      margin-bottom: 8px;
+      border: 1px solid #514329;
+      padding: 5px 9px;
+      border-radius: 5px;
+      margin-top: 14px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .specialty-item p,
-    .card p {
+    .hero-decoration {
+      position: absolute;
+      left: -28px;
+      bottom: 95px;
+      background: #141414;
+      border: 1px solid #514329;
+      border-radius: 9px;
+      padding: 13px 15px;
+      color: var(--gold);
+      font-size: 12px;
+      box-shadow: 0 12px 35px #000;
+    }
+
+    .hero-decoration span {
+      display: block;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 10px;
     }
 
-    .grid {
+    /* Network illustration */
+
+    .network-diagram {
+      margin-top: 35px;
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(18,18,18,.8);
+    }
+
+    .network-diagram svg {
+      display: block;
+      width: 100%;
+      max-height: 185px;
+    }
+
+    .network-caption {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .network-line {
+      stroke: #8f7338;
+      stroke-width: 1.5;
+      stroke-dasharray: 5 5;
+      animation: dash 12s linear infinite;
+    }
+
+    .network-node {
+      fill: #151515;
+      stroke: var(--gold);
+      stroke-width: 2;
+    }
+
+    .network-text {
+      fill: #f5f5f5;
+      font-size: 10px;
+      text-anchor: middle;
+    }
+
+    @keyframes dash { to { stroke-dashoffset: -100; } }
+
+    /* Reusable cards */
+
+    .grid-2 {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 18px;
     }
 
     .card {
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color .2s, transform .2s;
     }
 
     .card:hover {
-      border-color: var(--gold);
+      border-color: #786034;
       transform: translateY(-3px);
     }
 
-    .tag {
-      display: inline-block;
+    .card h3 {
+      font-size: 18px;
+      margin: 0 0 9px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .card-icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #514329;
+      border-radius: 10px;
       color: var(--gold);
-      border: 1px solid #5a4928;
-      border-radius: 20px;
-      padding: 3px 10px;
-      margin-top: 13px;
-      margin-right: 5px;
+      background: #1d1910;
+      font-size: 21px;
+      margin-bottom: 18px;
+    }
+
+    .number {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* About */
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .about-point {
+      display: flex;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+
+    .about-point b { color: var(--gold); }
+
+    .about-point p {
+      margin: 4px 0 0;
+      color: var(--muted);
       font-size: 12px;
     }
 
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .skill {
-      cursor: pointer;
-      color: var(--text);
-      text-align: left;
-      font-size: 15px;
-      width: 100%;
-    }
-
-    .skill strong {
+    .point-number {
       color: var(--gold);
-      display: block;
-      margin-bottom: 5px;
+      font-weight: 800;
+      font-size: 18px;
     }
 
-    .skill small {
-      color: var(--muted);
-    }
+    /* Skills */
 
-    .skill:hover,
-    .skill.active {
-      border-color: var(--gold);
-      background: #201b11;
-    }
-
-    #skill-detail {
-      color: var(--muted);
-      margin-top: 18px;
-      padding: 18px;
-      border-left: 3px solid var(--gold);
-      background: var(--panel);
-      border-radius: 5px;
-    }
-
-    .education {
+    .skill-filters {
       display: flex;
-      gap: 20px;
-      align-items: center;
-      background: var(--panel);
-      padding: 24px;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .filter-btn {
       border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 8px 13px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      color: #111;
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .skill-card {
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      color: var(--text);
+      min-height: 140px;
+    }
+
+    .skill-card[hidden] { display: none; }
+
+    .skill-card strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .skill-card small {
+      display: inline-block;
+      color: var(--muted);
+      margin-top: 13px;
+      font-size: 11px;
+    }
+
+    .skill-card .arrow {
+      float: right;
+      color: var(--gold);
+    }
+
+    .skill-detail {
+      margin-top: 20px;
+      padding: 24px;
+      border: 1px solid #514329;
+      border-left: 4px solid var(--gold);
       border-radius: 10px;
+      background: linear-gradient(110deg, #19160f, #101010);
+    }
+
+    .skill-detail h3 { margin: 0 0 8px; }
+
+    .skill-detail p {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .detail-label {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* Projects */
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 295px;
+    }
+
+    .project-card .project-footer {
+      margin-top: auto;
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      border: 1px solid #514329;
+      border-radius: 30px;
+      padding: 4px 9px;
+      color: var(--gold-light);
+      font-size: 10px;
+    }
+
+    .project-status {
+      font-size: 10px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 4px 7px;
+    }
+
+    .text-button {
+      border: 0;
+      background: none;
+      color: var(--gold);
+      padding: 0;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .text-button:hover { text-decoration: underline; }
+
+    /* Roadmap */
+
+    .roadmap {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .roadmap-card {
+      position: relative;
+      padding-top: 30px;
+    }
+
+    .roadmap-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 24px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(214,173,85,.1);
+    }
+
+    .roadmap-card ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .roadmap-card li { margin: 7px 0; }
+
+    .roadmap-label {
+      color: var(--gold);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* Education */
+
+    .education-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
     }
 
     .uog-logo {
-      width: 85px;
-      height: 85px;
+      width: 100px;
+      height: 100px;
       object-fit: contain;
-      background: white;
-      border-radius: 8px;
-      padding: 5px;
+      padding: 8px;
+      border-radius: 10px;
+      background: #fff;
+      flex-shrink: 0;
     }
 
-    .education p {
-      color: var(--muted);
-    }
-
-    .contact-grid {
+    .logo-fallback {
+      width: 100px;
+      height: 100px;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      place-items: center;
+      border-radius: 10px;
+      background: #1d1910;
+      color: var(--gold);
+      font-weight: 900;
+      border: 1px solid #514329;
+      flex-shrink: 0;
+    }
+
+    .education-card h3 { margin: 0 0 5px; }
+
+    .education-card p {
+      color: var(--muted);
+      margin: 3px 0;
+      font-size: 14px;
+    }
+
+    /* Contact */
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 35px;
+    }
+
+    .contact-copy p { color: var(--muted); }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
     }
 
     .contact-item {
-      background: var(--panel);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 16px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      padding: 18px;
-      border-radius: 8px;
+      border-radius: 9px;
       overflow-wrap: anywhere;
     }
 
     .contact-item strong {
       display: block;
       color: var(--gold);
-      margin-bottom: 5px;
+      font-size: 12px;
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 25px 0;
-      text-align: center;
-      color: var(--muted);
+    .contact-item a,
+    .contact-item span {
       font-size: 13px;
     }
 
-    @media (max-width: 750px) {
-      nav {
-        padding: 15px 0;
-        align-items: flex-start;
+    .copy-btn {
+      border: 1px solid var(--border);
+      background: #202020;
+      padding: 7px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .copy-btn:hover { border-color: var(--gold); }
+
+    #copy-feedback {
+      min-height: 22px;
+      font-size: 12px;
+      color: var(--gold);
+    }
+
+    /* Footer and back to top */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-content p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .back-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 45px;
+      height: 45px;
+      border: 1px solid var(--gold);
+      background: #17140e;
+      color: var(--gold);
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: .2s;
+      z-index: 50;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* Modal */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.82);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: min(650px, 100%);
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #121212;
+      border: 1px solid #66532e;
+      border-radius: 15px;
+      padding: 28px;
+      box-shadow: 0 25px 100px #000;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    .modal-close {
+      background: #222;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .modal-panel p,
+    .modal-panel li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .modal-panel h3 {
+      color: var(--gold);
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .modal-panel ul { padding-left: 20px; }
+
+    .modal-note {
+      border-left: 3px solid var(--gold);
+      padding: 12px 15px;
+      background: #1b1811;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    /* Entrance animation */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 950px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 11px; }
+      .hero { gap: 35px; }
+      .hero h1 { letter-spacing: -2px; }
+    }
+
+    @media (max-width: 780px) {
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+      }
+
+      .nav { flex-wrap: wrap; padding-block: 12px; }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        padding: 10px 0 15px;
         flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        font-size: 14px;
+        padding: 11px 5px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-contact {
+        border: 0;
+        padding: 11px 5px;
       }
 
       .hero {
         grid-template-columns: 1fr;
-        padding-top: 55px;
+        padding-block: 60px;
+        gap: 40px;
       }
 
-      .profile-card {
-        max-width: 420px;
-      }
+      .hero-visual { max-width: 420px; }
 
-      .specialty,
-      .skills,
-      .grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero-decoration { left: auto; right: -10px; }
+
+      .about-layout,
+      .contact-layout { grid-template-columns: 1fr; }
+
+      .grid-3,
+      .roadmap { grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+      .about-layout { gap: 25px; }
+    }
+
+    @media (max-width: 540px) {
+      .section { padding: 62px 0; }
+      .hero h1 { font-size: 43px; }
+      .hero-description { font-size: 14px; }
+      .grid-2,
+      .grid-3,
+      .roadmap { grid-template-columns: 1fr; }
+      .education-card { align-items: flex-start; padding: 18px; gap: 15px; }
+      .uog-logo, .logo-fallback { width: 70px; height: 70px; }
+      .contact-item { align-items: flex-start; }
+      .footer-content { align-items: flex-start; flex-direction: column; }
+      .modal-panel { padding: 20px; }
+      .network-diagram { padding: 8px; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav class="container">
-      <a class="brand" href="#home">
+  <header class="header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#home" class="brand" aria-label="Muluken Melkie home">
         <span class="brand-mark">MM</span>
-        <span>Muluken Melkie</span>
+        <span class="brand-name">
+          Muluken Melkie
+          <small>COMPUTER SCIENCE · UOG</small>
+        </span>
       </a>
 
-      <div class="nav-links">
+      <button class="menu-toggle" id="menu-toggle"
+              aria-label="Open navigation menu"
+              aria-expanded="false" aria-controls="nav-links">
+        ☰
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#interests">Interests</a>
+        <a href="#specialties">Specialties</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#roadmap">Roadmap</a>
         <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+        <a class="nav-contact" href="#contact">Contact Me ↗</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <div class="container hero" id="home">
-      <div>
-        <div class="eyebrow">Computer Science Student · UOG</div>
+    <!-- HERO -->
+    <section class="container hero" id="home">
+      <div class="reveal">
+        <div class="eyebrow">Computer Science Student · Gondar, Ethiopia</div>
 
         <h1>
-          Networks that connect.<br>
-          <span>Systems that work.</span>
+          Networks That Connect.
+          <span>Systems That Work.</span>
         </h1>
 
-        <p>
+        <div class="accent-line"></div>
+
+        <p class="hero-description">
           I am Muluken Melkie, a Computer Science student at the
-          University of Gondar, Ethiopia. I am interested in computer
-          networking, system administration, troubleshooting, and
-          building reliable IT infrastructure.
+          University of Gondar, building practical knowledge in computer
+          networking, system administration, IT infrastructure, and
+          technical troubleshooting.
         </p>
 
-        <div class="buttons">
-          <a class="button primary" href="#projects">Explore My Work</a>
-          <a class="button" href="#contact">Contact Me</a>
-          <a class="button"
-             href="https://github.com/mulukenamaru"
-             target="_blank" rel="noopener">
-            GitHub Profile
+        <div class="hero-buttons">
+          <a href="#projects" class="btn primary">Explore My Projects ↘</a>
+          <a href="#contact" class="btn">Contact Me</a>
+          <a href="https://github.com/mulukenamaru"
+             class="btn" target="_blank" rel="noopener noreferrer">
+            GitHub ↗
           </a>
         </div>
+
+        <div class="status">
+          <span class="status-dot"></span>
+          Focused on learning, practical labs, and technical growth
+        </div>
       </div>
 
-      <aside class="profile-card">
-        <img class="profile-photo"
-             src="mule.jpg"
-             alt="Muluken Melkie"
-             onerror="this.style.display='none'">
+      <div class="hero-visual reveal">
+        <div class="profile-card">
+          <img src="mule.jpg" alt="Portrait of Muluken Melkie"
+               class="profile-photo"
+               onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
 
-        <h2>Muluken Melkie</h2>
-        <p class="gold">Computer Science Student</p>
-        <p>University of Gondar · Ethiopia</p>
-      </aside>
-    </div>
+          <div class="photo-placeholder" hidden>MM</div>
 
-    <section id="about">
-      <div class="container">
-        <div class="eyebrow">Who I Am</div>
-        <h2 class="section-title">About Me</h2>
+          <h2>Muluken Melkie</h2>
+          <p>Aspiring Network &amp; System Administrator</p>
+          <p>University of Gondar · Ethiopia</p>
+          <span class="profile-label">Networking · Systems · IT</span>
 
-        <p class="section-intro">
-          I am developing my technical knowledge through computer
-          science studies and hands-on practice. My goal is to
-          strengthen my ability to configure networks, manage
-          computer systems, solve technical problems, and support
-          dependable IT environments.
-        </p>
+          <div class="network-diagram">
+            <svg viewBox="0 0 300 150" role="img"
+                 aria-label="Conceptual diagram showing a router connected to computers and a server">
+              <line class="network-line" x1="150" y1="36" x2="55" y2="100"/>
+              <line class="network-line" x1="150" y1="36" x2="150" y2="105"/>
+              <line class="network-line" x1="150" y1="36" x2="245" y2="100"/>
+
+              <rect class="network-node" x="116" y="14" width="68" height="38" rx="8"/>
+              <text class="network-text" x="150" y="37">ROUTER</text>
+
+              <rect class="network-node" x="17" y="96" width="76" height="35" rx="7"/>
+              <text class="network-text" x="55" y="117">CLIENT</text>
+
+              <rect class="network-node" x="112" y="103" width="76" height="35" rx="7"/>
+              <text class="network-text" x="150" y="124">SWITCH</text>
+
+              <rect class="network-node" x="207" y="96" width="76" height="35" rx="7"/>
+              <text class="network-text" x="245" y="117">SERVER</text>
+            </svg>
+            <div class="network-caption">Conceptual network topology illustration</div>
+          </div>
+        </div>
+
+        <div class="hero-decoration">
+          IT INFRASTRUCTURE
+          <span>Learn · Configure · Troubleshoot</span>
+        </div>
       </div>
     </section>
 
-    <section id="interests">
+    <!-- ABOUT -->
+    <section class="section" id="about">
       <div class="container">
-        <div class="eyebrow">My Main Focus</div>
-        <h2 class="section-title">Networking & System Administration</h2>
+        <div class="eyebrow">Introduction</div>
+        <h2 class="section-heading">About Me</h2>
+        <div class="accent-line"></div>
 
+        <div class="about-layout">
+          <div class="about-copy reveal">
+            <p>
+              I am a Computer Science student at the University of Gondar
+              with a strong interest in the technologies that connect
+              computers, support reliable systems, and keep IT
+              infrastructure running.
+            </p>
+            <p>
+              I am strengthening my technical foundation through
+              coursework, programming exercises, networking simulations,
+              and independent practice. I am particularly interested in
+              understanding how networks communicate, how operating
+              systems are managed, and how technical problems can be
+              diagnosed systematically.
+            </p>
+            <p>
+              My long-term goal is to develop into a capable network and
+              system administration professional through continuous
+              learning and practical experience.
+            </p>
+          </div>
+
+          <div class="about-points reveal">
+            <div class="about-point">
+              <span class="point-number">01</span>
+              <div>
+                <b>Learn</b>
+                <p>Build strong foundations in computer science and IT.</p>
+              </div>
+            </div>
+
+            <div class="about-point">
+              <span class="point-number">02</span>
+              <div>
+                <b>Build</b>
+                <p>Practice network configuration and system concepts.</p>
+              </div>
+            </div>
+
+            <div class="about-point">
+              <span class="point-number">03</span>
+              <div>
+                <b>Improve</b>
+                <p>Develop troubleshooting and technical communication.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIALTIES -->
+    <section class="section" id="specialties">
+      <div class="container">
+        <div class="eyebrow">Professional Direction</div>
+        <h2 class="section-heading">Areas of Interest</h2>
         <p class="section-intro">
-          I am especially interested in the technologies that keep
-          computers connected, servers running, and IT systems secure.
+          These are the technical areas I am prioritizing as I develop
+          my knowledge and build practical projects.
         </p>
 
-        <div class="specialty">
-          <article class="specialty-item">
-            <h3>01. Computer Networking</h3>
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">⌘</div>
+            <span class="number">01 / CONNECTIVITY</span>
+            <h3>Computer Networking</h3>
             <p>
-              IP addressing, subnetting, VLANs, routing, switching,
-              and network troubleshooting.
+              Learning network models, IPv4 addressing, subnetting,
+              VLANs, routing, switching, DNS, DHCP, and connectivity
+              testing.
             </p>
+            <div class="tags">
+              <span class="tag">TCP/IP</span>
+              <span class="tag">Subnetting</span>
+              <span class="tag">VLANs</span>
+            </div>
           </article>
 
-          <article class="specialty-item">
-            <h3>02. System Administration</h3>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">▣</div>
+            <span class="number">02 / OPERATIONS</span>
+            <h3>System Administration</h3>
             <p>
-              Operating systems, users and permissions, system
-              maintenance, services, and basic server management.
+              Studying operating systems, users and groups, permissions,
+              services, software updates, storage, and basic server
+              administration.
             </p>
+            <div class="tags">
+              <span class="tag">Operating Systems</span>
+              <span class="tag">Servers</span>
+            </div>
           </article>
 
-          <article class="specialty-item">
-            <h3>03. IT Troubleshooting</h3>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">⌕</div>
+            <span class="number">03 / RELIABILITY</span>
+            <h3>IT Troubleshooting</h3>
             <p>
-              Investigating connectivity problems, identifying
-              system issues, and applying step-by-step solutions.
+              Practicing structured diagnosis of connectivity, software,
+              configuration, and common computer system problems.
             </p>
+            <div class="tags">
+              <span class="tag">Diagnostics</span>
+              <span class="tag">Documentation</span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">◇</div>
+            <span class="number">04 / PROTECTION</span>
+            <h3>Security Fundamentals</h3>
+            <p>
+              Exploring access control, secure configurations, software
+              updates, backup concepts, and responsible system use.
+            </p>
+            <div class="tags">
+              <span class="tag">Access Control</span>
+              <span class="tag">Best Practices</span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">&lt;/&gt;</div>
+            <span class="number">05 / DEVELOPMENT</span>
+            <h3>Programming</h3>
+            <p>
+              Improving logical thinking and application development
+              through Java, object-oriented programming, and web
+              fundamentals.
+            </p>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">HTML/CSS/JS</span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">▤</div>
+            <span class="number">06 / INFORMATION</span>
+            <h3>Databases</h3>
+            <p>
+              Developing an understanding of data organization, database
+              structures, SQL fundamentals, and application data storage.
+            </p>
+            <div class="tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Data Modeling</span>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="skills">
+    <!-- INTERACTIVE SKILLS -->
+    <section class="section" id="skills">
       <div class="container">
-        <div class="eyebrow">What I Am Learning</div>
-        <h2 class="section-title">Technical Skills</h2>
-
+        <div class="eyebrow">Interactive Skills Explorer</div>
+        <h2 class="section-heading">Technical Skills</h2>
         <p class="section-intro">
-          Select a skill area to read more about it. These descriptions
-          represent areas of study and practice, not professional
-          certifications.
+          Choose a category, then select a skill to see what it means,
+          why it matters, and an example of a practical exercise.
         </p>
 
-        <div class="skills">
-          <button class="skill active" data-skill="network">
-            <strong>Computer Networking</strong>
-            <small>IP, subnetting, VLANs</small>
+        <div class="skill-filters" role="group" aria-label="Filter skills">
+          <button class="filter-btn active" data-filter="all">All Skills</button>
+          <button class="filter-btn" data-filter="network">Networking</button>
+          <button class="filter-btn" data-filter="system">Systems</button>
+          <button class="filter-btn" data-filter="programming">Programming</button>
+          <button class="filter-btn" data-filter="database">Databases</button>
+          <button class="filter-btn" data-filter="tools">Tools</button>
+          <button class="filter-btn" data-filter="professional">Professional</button>
+        </div>
+
+        <div class="grid-3" id="skill-grid">
+          <button class="card skill-card reveal active"
+                  data-category="network" data-skill="subnetting">
+            <strong>IP Addressing &amp; Subnetting <span class="arrow">↗</span></strong>
+            <p>Understand how IP networks are divided and addressed.</p>
+            <small>STATUS: LEARNING / PRACTICING</small>
           </button>
 
-          <button class="skill" data-skill="system">
-            <strong>System Administration</strong>
-            <small>OS, users, services</small>
+          <button class="card skill-card reveal"
+                  data-category="network" data-skill="vlan">
+            <strong>VLANs &amp; Switching <span class="arrow">↗</span></strong>
+            <p>Study logical network segmentation and switching.</p>
+            <small>STATUS: LEARNING / PRACTICING</small>
           </button>
 
-          <button class="skill" data-skill="troubleshooting">
-            <strong>Troubleshooting</strong>
-            <small>Diagnosis and solutions</small>
+          <button class="card skill-card reveal"
+                  data-category="network" data-skill="routing">
+            <strong>Routing &amp; Connectivity <span class="arrow">↗</span></strong>
+            <p>Learn how devices communicate across networks.</p>
+            <small>STATUS: LEARNING</small>
           </button>
 
-          <button class="skill" data-skill="programming">
-            <strong>Programming</strong>
-            <small>Java and problem-solving</small>
+          <button class="card skill-card reveal"
+                  data-category="network" data-skill="dns">
+            <strong>DNS &amp; DHCP <span class="arrow">↗</span></strong>
+            <p>Explore name resolution and automatic IP configuration.</p>
+            <small>STATUS: LEARNING</small>
           </button>
 
-          <button class="skill" data-skill="database">
-            <strong>Databases</strong>
-            <small>Database fundamentals</small>
+          <button class="card skill-card reveal"
+                  data-category="system" data-skill="operating">
+            <strong>Operating Systems <span class="arrow">↗</span></strong>
+            <p>Explore system configuration and process management.</p>
+            <small>STATUS: LEARNING</small>
           </button>
 
-          <button class="skill" data-skill="tools">
-            <strong>IT Tools</strong>
-            <small>Packet Tracer and GitHub</small>
+          <button class="card skill-card reveal"
+                  data-category="system" data-skill="permissions">
+            <strong>Users &amp; Permissions <span class="arrow">↗</span></strong>
+            <p>Understand accounts, groups, and access permissions.</p>
+            <small>STATUS: LEARNING</small>
+          </button>
+
+          <button class="card skill-card reveal"
+                  data-category="programming" data-skill="java">
+            <strong>Java &amp; OOP <span class="arrow">↗</span></strong>
+            <p>Practice classes, objects, and file operations.</p>
+            <small>STATUS: LEARNING / PRACTICING</small>
+          </button>
+
+          <button class="card skill-card reveal"
+                  data-category="programming" data-skill="web">
+            <strong>Web Fundamentals <span class="arrow">↗</span></strong>
+            <p>Build pages with HTML, CSS, and JavaScript.</p>
+            <small>STATUS: LEARNING / PRACTICING</small>
+          </button>
+
+          <button class="card skill-card reveal"
+                  data-category="database" data-skill="sql">
+            <strong>SQL Fundamentals <span class="arrow">↗</span></strong>
+            <p>Study how applications organize and query information.</p>
+            <small>STATUS: LEARNING</small>
+          </button>
+
+          <button class="card skill-card reveal"
+                  data-category="tools" data-skill="packet">
+            <strong>Cisco Packet Tracer <span class="arrow">↗</span></strong>
+            <p>Simulate networks and practice configurations.</p>
+            <small>STATUS: PRACTICING</small>
+          </button>
+
+          <button class="card skill-card reveal"
+                  data-category="tools" data-skill="git">
+            <strong>Git &amp; GitHub <span class="arrow">↗</span></strong>
+            <p>Manage code and document project progress.</p>
+            <small>STATUS: LEARNING / PRACTICING</small>
+          </button>
+
+          <button class="card skill-card reveal"
+                  data-category="professional" data-skill="troubleshoot">
+            <strong>Problem-Solving <span class="arrow">↗</span></strong>
+            <p>Investigate issues systematically and document results.</p>
+            <small>STATUS: DEVELOPING</small>
           </button>
         </div>
 
-        <div id="skill-detail" aria-live="polite">
-          <strong class="gold">Computer Networking</strong>
-          <p>
-            Learning IP addressing, subnet masks, subnetting,
-            VLAN configuration, and the fundamentals of routing
-            and switching.
-          </p>
+        <div class="skill-detail" id="skill-detail" aria-live="polite">
+          <span class="detail-label">Selected skill</span>
+          <h3 id="skill-detail-title">IP Addressing &amp; Subnetting</h3>
+          <p><b class="gold">What it means:</b> <span id="skill-meaning">Understanding IP addresses, subnet masks, network addresses, and usable host ranges.</span></p>
+          <p><b class="gold">Why it matters:</b> <span id="skill-why">Correct addressing helps devices communicate and allows networks to be organized efficiently.</span></p>
+          <p><b class="gold">Practice example:</b> <span id="skill-example">Calculate the network address, broadcast address, and usable host range for a /27 subnet, then test the setup in Packet Tracer.</span></p>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
       <div class="container">
-        <div class="eyebrow">Practice & Development</div>
-        <h2 class="section-title">Projects</h2>
-
+        <div class="eyebrow">Practical Work</div>
+        <h2 class="section-heading">Projects &amp; Labs</h2>
         <p class="section-intro">
-          Examples of projects and practical work that I can develop
-          and document as I continue learning.
+          These project descriptions identify work and learning directions.
+          Update each status and add a repository link when you have
+          verified the actual implementation.
         </p>
 
-        <div class="grid">
-          <article class="card">
+        <div class="grid-2">
+          <article class="card project-card reveal">
+            <div class="card-icon" aria-hidden="true">⌘</div>
+            <span class="number">PROJECT 01 · NETWORKING</span>
             <h3>Network Configuration Lab</h3>
             <p>
-              A networking practice project covering IP addressing,
-              subnetting, VLANs, and connectivity testing in
-              Cisco Packet Tracer.
+              A lab exploring IP addressing, subnetting, VLAN segmentation,
+              and connectivity testing in Cisco Packet Tracer.
             </p>
-            <span class="tag">Networking</span>
-            <span class="tag">Packet Tracer</span>
+            <div class="tags">
+              <span class="tag">Packet Tracer</span>
+              <span class="tag">IPv4</span>
+              <span class="tag">VLANs</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-status">Practice project</span>
+              <button class="text-button project-open" data-project="network">
+                View Details ↗
+              </button>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>System Administration Practice</h3>
+          <article class="card project-card reveal">
+            <div class="card-icon" aria-hidden="true">▣</div>
+            <span class="number">PROJECT 02 · SYSTEMS</span>
+            <h3>System Administration Lab</h3>
             <p>
-              Practical study of operating system configuration,
-              account management, file permissions, and
-              troubleshooting common system issues.
+              A practical learning plan covering operating system
+              configuration, accounts, permissions, services, and
+              troubleshooting.
             </p>
-            <span class="tag">Operating Systems</span>
-            <span class="tag">IT Support</span>
+            <div class="tags">
+              <span class="tag">Operating Systems</span>
+              <span class="tag">Administration</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-status">Practice project</span>
+              <button class="text-button project-open" data-project="system">
+                View Details ↗
+              </button>
+            </div>
           </article>
 
-          <article class="card">
-            <h3>Smart Campus Assistance</h3>
+          <article class="card project-card reveal">
+            <div class="card-icon" aria-hidden="true">▤</div>
+            <span class="number">PROJECT 03 · ANDROID</span>
+            <h3>UOG Smart Campus Assistance</h3>
             <p>
-              A university-focused mobile application concept
-              intended to help students access campus information
-              and useful services.
+              A university-focused mobile application concept intended
+              to make campus information and student services easier
+              to access.
             </p>
-            <span class="tag">Android</span>
-            <span class="tag">Kotlin</span>
+            <div class="tags">
+              <span class="tag">Android</span>
+              <span class="tag">Kotlin</span>
+              <span class="tag">Database Concepts</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-status">Project concept / update status</span>
+              <button class="text-button project-open" data-project="campus">
+                View Details ↗
+              </button>
+            </div>
           </article>
 
-          <article class="card">
+          <article class="card project-card reveal">
+            <div class="card-icon" aria-hidden="true">&lt;/&gt;</div>
+            <span class="number">PROJECT 04 · JAVA</span>
             <h3>Java Student Records</h3>
             <p>
-              A Java learning project exploring classes, objects,
-              student information, and file input/output.
+              A Java learning project involving student records,
+              object-oriented programming, and file input/output.
             </p>
-            <span class="tag">Java</span>
-            <span class="tag">OOP</span>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">OOP</span>
+              <span class="tag">File I/O</span>
+            </div>
+            <div class="project-footer">
+              <span class="project-status">Coursework / update status</span>
+              <button class="text-button project-open" data-project="java">
+                View Details ↗
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <p class="muted" style="font-size:12px;margin-top:18px">
+          Note: Only label a project as completed when its implementation
+          and results are ready to demonstrate.
+        </p>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div class="eyebrow">Continuous Improvement</div>
+        <h2 class="section-heading">My Technical Growth Roadmap</h2>
+        <p class="section-intro">
+          A learning plan for building stronger networking and system
+          administration skills. These are learning goals, not claims
+          of completed qualifications.
+        </p>
+
+        <div class="roadmap">
+          <article class="card roadmap-card reveal">
+            <span class="roadmap-label">Stage 01</span>
+            <h3>Build the Foundations</h3>
+            <p class="muted">Understand the basics before moving to complex labs.</p>
+            <ul>
+              <li>Networking models and IP addressing</li>
+              <li>Subnetting and command-line basics</li>
+              <li>Linux and Windows fundamentals</li>
+              <li>Git and GitHub basics</li>
+            </ul>
+          </article>
+
+          <article class="card roadmap-card reveal">
+            <span class="roadmap-label">Stage 02</span>
+            <h3>Practice in Labs</h3>
+            <p class="muted">Turn concepts into configurations and documented results.</p>
+            <ul>
+              <li>VLAN and routing exercises</li>
+              <li>DNS and DHCP practice</li>
+              <li>User and permission management</li>
+              <li>Network troubleshooting reports</li>
+            </ul>
+          </article>
+
+          <article class="card roadmap-card reveal">
+            <span class="roadmap-label">Stage 03</span>
+            <h3>Develop Further</h3>
+            <p class="muted">Build broader knowledge and more realistic projects.</p>
+            <ul>
+              <li>Server administration</li>
+              <li>Network monitoring concepts</li>
+              <li>Cybersecurity fundamentals</li>
+              <li>Automation and scripting</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="education">
+    <!-- EDUCATION -->
+    <section class="section" id="education">
       <div class="container">
         <div class="eyebrow">Academic Background</div>
-        <h2 class="section-title">Education</h2>
+        <h2 class="section-heading">Education</h2>
+        <p class="section-intro">
+          My academic foundation and continuing development in computer science.
+        </p>
 
-        <div class="education">
-          <img class="uog-logo"
-               src="uog-logo.png"
-               alt="University of Gondar logo"
-               onerror="this.style.display='none'">
+        <div class="education-card reveal">
+          <img src="uog-logo.png" alt="University of Gondar logo"
+               class="uog-logo"
+               onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
+
+          <div class="logo-fallback" hidden>UOG</div>
 
           <div>
+            <span class="roadmap-label">University Education</span>
             <h3>University of Gondar (UOG)</h3>
-            <p>Bachelor's studies in Computer Science</p>
+            <p>Computer Science</p>
             <p>Gondar, Amhara, Ethiopia</p>
+            <p class="gold">Academic and technical development</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <!-- CONTACT -->
+    <section class="section" id="contact">
       <div class="container">
-        <div class="eyebrow">Let's Connect</div>
-        <h2 class="section-title">Contact Me</h2>
+        <div class="eyebrow">Start a Conversation</div>
+        <h2 class="section-heading">Let's Connect</h2>
 
-        <p class="section-intro">
-          I welcome opportunities to learn, collaborate on technical
-          projects, and connect with people in IT and networking.
-        </p>
+        <div class="contact-layout">
+          <div class="contact-copy reveal">
+            <h3>Interested in IT, networking, and technology?</h3>
+            <p>
+              I welcome opportunities to learn, collaborate on projects,
+              exchange technical knowledge, and connect with people
+              working in computer science and IT.
+            </p>
 
-        <div class="contact-grid">
-          <div class="contact-item">
-            <strong>Email</strong>
-            <a href="mailto:mulukenamaru74@gmail.com">
-              mulukenamaru74@gmail.com
-            </a>
-          </div>
-
-          <div class="contact-item">
-            <strong>Phone</strong>
-            <a href="tel:+251918511548">+251 918 511 548</a>
-          </div>
-
-          <div class="contact-item">
-            <strong>GitHub</strong>
             <a href="https://github.com/mulukenamaru"
-               target="_blank" rel="noopener">
-              github.com/mulukenamaru
+               class="btn primary"
+               target="_blank" rel="noopener noreferrer">
+              Visit My GitHub ↗
             </a>
           </div>
 
-          <div class="contact-item">
-            <strong>Location</strong>
-            <span>Gondar, Ethiopia</span>
+          <div class="contact-list reveal">
+            <div class="contact-item">
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:mulukenamaru74@gmail.com">
+                  mulukenamaru74@gmail.com
+                </a>
+              </div>
+              <button class="copy-btn" id="copy-email">Copy email</button>
+            </div>
+
+            <div class="contact-item">
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+251918511548">+251 918 511 548</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div>
+                <strong>GitHub</strong>
+                <a href="https://github.com/mulukenamaru"
+                   target="_blank" rel="noopener noreferrer">
+                  github.com/mulukenamaru
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div>
+                <strong>Location</strong>
+                <span>Gondar, Ethiopia</span>
+              </div>
+            </div>
+
+            <p id="copy-feedback" aria-live="polite"></p>
           </div>
         </div>
       </div>
@@ -652,69 +1643,444 @@
   </main>
 
   <footer>
-    <div class="container">
-      <p>
-        © <span id="year"></span> Muluken Melkie.
-        Built with HTML, CSS, and JavaScript.
-      </p>
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Muluken Melkie. Built with HTML, CSS &amp; JavaScript.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/mulukenamaru"
+           target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
     </div>
   </footer>
 
+  <button class="back-top" id="back-top"
+          aria-label="Back to top" title="Back to top">↑</button>
+
+  <!-- Project detail modal -->
+  <div class="modal" id="project-modal"
+       role="dialog" aria-modal="true"
+       aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Project Details</span>
+          <h2 id="modal-title">Project</h2>
+        </div>
+        <button class="modal-close" id="modal-close"
+                aria-label="Close project details">✕</button>
+      </div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
   <script>
+    // Current year in footer
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    const skillInfo = {
-      network: {
-        title: "Computer Networking",
-        description:
-          "Learning IP addressing, subnet masks, subnetting, VLAN configuration, and the fundamentals of routing and switching."
+    // Mobile navigation menu
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Interactive skills: meaning, importance, and practical exercise
+    const skillData = {
+      subnetting: {
+        title: "IP Addressing & Subnetting",
+        meaning: "Understanding IP addresses, subnet masks, network addresses, broadcast addresses, and usable host ranges.",
+        why: "Correct addressing helps devices communicate and allows a network to be divided into manageable subnets.",
+        example: "Calculate the network address, broadcast address, and usable host range for a /27 subnet, then test the setup in Packet Tracer."
       },
-      system: {
-        title: "System Administration",
-        description:
-          "Studying operating systems, user accounts, permissions, system maintenance, services, and basic server administration."
+      vlan: {
+        title: "VLANs & Switching",
+        meaning: "A VLAN logically separates devices into different broadcast domains on supported switches.",
+        why: "Segmentation can improve network organization and help separate groups of devices.",
+        example: "Create VLANs 10, 20, and 30 on a simulated switch, assign ports, and verify connectivity."
       },
-      troubleshooting: {
-        title: "IT Troubleshooting",
-        description:
-          "Practicing systematic diagnosis of network connectivity problems, software issues, and common computer system errors."
+      routing: {
+        title: "Routing & Connectivity",
+        meaning: "Routing moves traffic between different IP networks using routes and routing decisions.",
+        why: "Devices on different networks need a suitable route to communicate.",
+        example: "Configure two IP networks and a router in a lab, then test the path with ping and inspect routing information."
       },
-      programming: {
-        title: "Programming",
-        description:
-          "Developing programming and problem-solving skills through Java, object-oriented programming, and practical coursework."
+      dns: {
+        title: "DNS & DHCP",
+        meaning: "DNS maps domain names to records, while DHCP can automatically provide network configuration to clients.",
+        why: "These services reduce manual setup and help users and devices find network resources.",
+        example: "Document a sample DHCP address pool and explain how a client resolves a domain name using DNS."
       },
-      database: {
-        title: "Databases",
-        description:
-          "Learning database fundamentals, data organization, SQL concepts, and how applications store and retrieve information."
+      operating: {
+        title: "Operating Systems",
+        meaning: "An operating system manages hardware, applications, memory, processes, and system resources.",
+        why: "System administrators need to understand how a computer starts, runs services, and reports errors.",
+        example: "Explore running processes, system information, storage usage, and system logs on a practice computer."
       },
-      tools: {
-        title: "IT Tools",
-        description:
-          "Using learning tools such as Cisco Packet Tracer for network simulations and GitHub to store and share code."
+      permissions: {
+        title: "Users & Permissions",
+        meaning: "User and group accounts identify who can access a system and what actions they are allowed to perform.",
+        why: "Appropriate permissions help protect files and system resources from unauthorized changes.",
+        example: "Create test accounts in a safe lab and compare read, write, and execute permissions on sample files."
+      },
+      java: {
+        title: "Java & Object-Oriented Programming",
+        meaning: "Java is a programming language; OOP organizes code using classes, objects, fields, and methods.",
+        why: "These concepts help structure larger programs and model real-world records or entities.",
+        example: "Create a Student class with fields and methods, then save and retrieve sample student records."
+      },
+      web: {
+        title: "Web Fundamentals",
+        meaning: "HTML structures a page, CSS styles it, and JavaScript adds behavior and interaction.",
+        why: "These technologies can be used to build accessible websites and present projects online.",
+        example: "Build a responsive portfolio page with navigation, project cards, and an interactive skills section."
+      },
+      sql: {
+        title: "SQL Fundamentals",
+        meaning: "SQL is used to define, query, and manipulate data in relational databases.",
+        why: "Applications often rely on databases to store records consistently and retrieve information efficiently.",
+        example: "Design a small student table and practice SELECT, INSERT, UPDATE, and DELETE operations on test data."
+      },
+      packet: {
+        title: "Cisco Packet Tracer",
+        meaning: "Packet Tracer is a network simulation tool for practicing configurations with virtual networking devices.",
+        why: "It lets learners explore network behavior and test configurations without requiring a physical lab.",
+        example: "Build a small topology with PCs, a switch, and a router, assign IP addresses, and document successful tests."
+      },
+      git: {
+        title: "Git & GitHub",
+        meaning: "Git tracks changes to files; GitHub hosts repositories and supports sharing and collaboration.",
+        why: "Version control helps preserve project history and makes code easier to review and maintain.",
+        example: "Create a repository for a lab, write a README, commit changes, and publish the portfolio with GitHub Pages."
+      },
+      troubleshoot: {
+        title: "Problem-Solving & Documentation",
+        meaning: "Troubleshooting uses a repeatable process to identify a problem, test possible causes, and verify a fix.",
+        why: "A structured process avoids random changes and makes technical work easier to explain and repeat.",
+        example: "For a connectivity issue, check physical links, IP settings, gateway, routes, and test results; record the cause and solution."
       }
     };
 
-    const skillButtons = document.querySelectorAll(".skill");
-    const detail = document.getElementById("skill-detail");
+    const skillCards = document.querySelectorAll(".skill-card");
+    const filterButtons = document.querySelectorAll(".filter-btn");
 
-    skillButtons.forEach(function(button) {
-      button.addEventListener("click", function() {
-        skillButtons.forEach(function(item) {
-          item.classList.remove("active");
-        });
+    const skillTitle = document.getElementById("skill-detail-title");
+    const skillMeaning = document.getElementById("skill-meaning");
+    const skillWhy = document.getElementById("skill-why");
+    const skillExample = document.getElementById("skill-example");
 
-        button.classList.add("active");
+    function selectSkill(key, card) {
+      const data = skillData[key];
+      if (!data) return;
 
-        const skill = skillInfo[button.dataset.skill];
+      skillCards.forEach(function (item) {
+        item.classList.remove("active");
+      });
 
-        detail.innerHTML =
-          "<strong class='gold'>" + skill.title + "</strong>" +
-          "<p>" + skill.description + "</p>";
+      if (card) card.classList.add("active");
+
+      skillTitle.textContent = data.title;
+      skillMeaning.textContent = data.meaning;
+      skillWhy.textContent = data.why;
+      skillExample.textContent = data.example;
+    }
+
+    skillCards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        selectSkill(card.dataset.skill, card);
       });
     });
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        filterButtons.forEach(function (item) {
+          item.classList.remove("active");
+        });
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+
+        skillCards.forEach(function (card) {
+          card.hidden = filter !== "all" &&
+                        card.dataset.category !== filter;
+        });
+      });
+    });
+
+    // Project detail content. These describe learning plans, not
+    // verified completed implementations.
+    const projectData = {
+      network: {
+        title: "Network Configuration Lab",
+        overview: "A practical lab for learning network configuration and understanding how devices communicate.",
+        objective: "Practice addressing, segmentation, and connectivity checks in a simulated environment.",
+        tools: ["Cisco Packet Tracer", "IPv4 addressing", "Subnetting", "VLAN concepts"],
+        steps: [
+          "Design a small topology with PCs and a switch.",
+          "Plan IP addresses and subnet masks.",
+          "Configure VLANs and port assignments where appropriate.",
+          "Test connectivity and record the results.",
+          "Document configuration commands and troubleshooting steps."
+        ],
+        learning: "The lab can demonstrate network planning, systematic testing, and clear technical documentation.",
+        note: "Add your real topology screenshot, configuration files, test results, and repository link when available."
+      },
+      system: {
+        title: "System Administration Lab",
+        overview: "A structured practice project exploring common operating system administration tasks.",
+        objective: "Build familiarity with system configuration and routine troubleshooting.",
+        tools: ["Windows or Linux practice environment", "Command line", "System utilities"],
+        steps: [
+          "Inspect system information and running processes.",
+          "Practice user and group management in a safe environment.",
+          "Explore file permissions and service status.",
+          "Review relevant system logs.",
+          "Document a problem, diagnosis, and verified solution."
+        ],
+        learning: "The lab can build habits in configuration, troubleshooting, and documenting repeatable procedures.",
+        note: "List only the operating system, commands, and tasks you have actually tested."
+      },
+      campus: {
+        title: "UOG Smart Campus Assistance",
+        overview: "A university-focused mobile application concept intended to make campus information and student services easier to access.",
+        objective: "Explore how a mobile app might organize useful information for students and university staff.",
+        tools: ["Kotlin", "Android", "Firebase or SQLite, depending on the implementation"],
+        steps: [
+          "Identify the actual student needs the application will address.",
+          "Design student, teacher, and administrator workflows if required.",
+          "Plan the data model and select a suitable storage approach.",
+          "Implement and test each feature before marking it complete.",
+          "Document limitations and possible future improvements."
+        ],
+        learning: "This project can connect application design, Android development, database concepts, and user-centered problem solving.",
+        note: "Do not list features as completed unless they exist in your working application."
+      },
+      java: {
+        title: "Java Student Records",
+        overview: "A Java programming project for representing student information and practicing file input/output.",
+        objective: "Apply object-oriented concepts to a small record-management example.",
+        tools: ["Java", "Classes and objects", "File I/O", "NetBeans or another Java IDE"],
+        steps: [
+          "Create a Student class with suitable fields and methods.",
+          "Create sample student objects.",
+          "Write records to a file using an appropriate approach.",
+          "Read the saved data and display the results.",
+          "Handle common input and file errors."
+        ],
+        learning: "This project can demonstrate object-oriented design, data representation, and basic persistence.",
+        note: "Add a link to the actual source code repository after you upload it."
+      }
+    };
+
+    const modal = document.getElementById("project-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalContent = document.getElementById("modal-content");
+    const modalClose = document.getElementById("modal-close");
+    let previousFocus = null;
+
+    function openProject(key) {
+      const project = projectData[key];
+      if (!project) return;
+
+      previousFocus = document.activeElement;
+      modalTitle.textContent = project.title;
+
+      const heading = document.createElement("h3");
+      heading.textContent = "Overview";
+
+      const overview = document.createElement("p");
+      overview.textContent = project.overview;
+
+      const objectiveHeading = document.createElement("h3");
+      objectiveHeading.textContent = "Objective";
+
+      const objective = document.createElement("p");
+      objective.textContent = project.objective;
+
+      const toolsHeading = document.createElement("h3");
+      toolsHeading.textContent = "Tools and technologies";
+
+      const toolsList = document.createElement("ul");
+      project.tools.forEach(function (tool) {
+        const li = document.createElement("li");
+        li.textContent = tool;
+        toolsList.appendChild(li);
+      });
+
+      const stepsHeading = document.createElement("h3");
+      stepsHeading.textContent = "Suggested workflow";
+
+      const stepsList = document.createElement("ol");
+      project.steps.forEach(function (step) {
+        const li = document.createElement("li");
+        li.textContent = step;
+        stepsList.appendChild(li);
+      });
+
+      const learningHeading = document.createElement("h3");
+      learningHeading.textContent = "Learning outcomes";
+
+      const learning = document.createElement("p");
+      learning.textContent = project.learning;
+
+      const note = document.createElement("div");
+      note.className = "modal-note";
+      note.textContent = project.note;
+
+      modalContent.replaceChildren(
+        heading, overview,
+        objectiveHeading, objective,
+        toolsHeading, toolsList,
+        stepsHeading, stepsList,
+        learningHeading, learning,
+        note
+      );
+
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      modalClose.focus();
+    }
+
+    function closeProject() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+
+      if (previousFocus) previousFocus.focus();
+    }
+
+    document.querySelectorAll(".project-open").forEach(function (button) {
+      button.addEventListener("click", function () {
+        openProject(button.dataset.project);
+      });
+    });
+
+    modalClose.addEventListener("click", closeProject);
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) closeProject();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && modal.classList.contains("open")) {
+        closeProject();
+      }
+    });
+
+    // Copy email address with a visible result
+    const copyButton = document.getElementById("copy-email");
+    const copyFeedback = document.getElementById("copy-feedback");
+    const emailAddress = "mulukenamaru74@gmail.com";
+
+    copyButton.addEventListener("click", async function () {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(emailAddress);
+        } else {
+          const temporaryInput = document.createElement("textarea");
+          temporaryInput.value = emailAddress;
+          temporaryInput.setAttribute("readonly", "");
+          temporaryInput.style.position = "fixed";
+          temporaryInput.style.opacity = "0";
+          document.body.appendChild(temporaryInput);
+          temporaryInput.select();
+
+          const copied = document.execCommand("copy");
+          temporaryInput.remove();
+
+          if (!copied) throw new Error("Copy not supported");
+        }
+
+        copyButton.textContent = "Copied!";
+        copyFeedback.textContent = "Email address copied to clipboard.";
+      } catch (error) {
+        copyFeedback.textContent =
+          "Copy was unavailable. Please select the email address manually.";
+      }
+
+      window.setTimeout(function () {
+        copyButton.textContent = "Copy email";
+      }, 2200);
+    });
+
+    // Back-to-top button
+    const backTop = document.getElementById("back-top");
+
+    function updateBackTop() {
+      backTop.classList.toggle("visible", window.scrollY > 450);
+    }
+
+    window.addEventListener("scroll", updateBackTop, { passive: true });
+    updateBackTop();
+
+    backTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Reveal sections when visible. Respect reduced-motion preferences.
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach(function (element) {
+        revealObserver.observe(element);
+      });
+    } else {
+      document.querySelectorAll(".reveal").forEach(function (element) {
+        element.classList.add("in-view");
+      });
+    }
+
+    // Highlight the navigation item for the current section.
+    const sections = document.querySelectorAll("main section[id]");
+    const sectionLinks = document.querySelectorAll(".nav-links a[href^='#']");
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+
+          sectionLinks.forEach(function (link) {
+            const matches = link.getAttribute("href") ===
+                            "#" + entry.target.id;
+            link.classList.toggle("active", matches);
+          });
+        });
+      }, { rootMargin: "-30% 0px -60% 0px" });
+
+      sections.forEach(function (section) {
+        sectionObserver.observe(section);
+      });
+    }
   </script>
 </body>
 </html>
