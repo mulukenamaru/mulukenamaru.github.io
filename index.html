@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b0b0d">
-  <meta name="description" content="Muluken Melkie — Computer Science student at the University of Gondar.">
+  <meta name="description" content="Muluken Melkie - Computer Science student at the University of Gondar.">
   <title>Muluken Melkie | Portfolio</title>
 
   <style>
@@ -16,7 +16,7 @@
       --text: #f5f3ed;
       --muted: #b8b4aa;
       --gold: #e3bd65;
-      --line: rgba(227, 189, 101, .3);
+      --line: rgba(227,189,101,.3);
       --max: 1120px;
     }
 
@@ -36,20 +36,15 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 4px;
-    }
+    button { font: inherit; cursor: pointer; }
+    .gold { color: var(--gold); }
 
     .container {
       width: min(var(--max), calc(100% - 36px));
       margin: auto;
     }
 
-    .gold { color: var(--gold); }
+    .section { padding: 80px 0; }
 
     .eyebrow {
       color: var(--gold);
@@ -58,8 +53,6 @@
       letter-spacing: .16em;
       text-transform: uppercase;
     }
-
-    .section { padding: 80px 0; }
 
     .heading {
       max-width: 720px;
@@ -79,7 +72,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11, 11, 13, .95);
+      background: rgba(11,11,13,.96);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid #ffffff15;
     }
@@ -99,15 +92,23 @@
       font-weight: bold;
     }
 
+    /* YOUR PHOTO INSTEAD OF MM */
     .brand-mark {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #f3d990, #b8872c);
-      color: #17130a;
-      font-weight: 900;
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: var(--panel2);
+    }
+
+    .brand-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     .brand small {
@@ -132,12 +133,11 @@
 
     .menu {
       display: none;
-      background: var(--panel);
       color: var(--text);
+      background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 9px;
       padding: 8px 12px;
-      cursor: pointer;
     }
 
     /* HERO */
@@ -195,14 +195,13 @@
       border-radius: 10px;
       border: 1px solid var(--line);
       font-weight: bold;
-      cursor: pointer;
       transition: transform .2s;
     }
 
     .btn:hover { transform: translateY(-2px); }
 
     .primary {
-      background: linear-gradient(135deg, #f3d990, #c29337);
+      background: linear-gradient(135deg,#f3d990,#c29337);
       color: #17130a;
       border-color: transparent;
     }
@@ -219,7 +218,7 @@
     }
 
     .portrait {
-      width: min(100%, 350px);
+      width: min(100%,350px);
       justify-self: end;
       position: relative;
     }
@@ -228,7 +227,7 @@
       padding: 10px;
       border: 1px solid var(--line);
       border-radius: 25px;
-      background: linear-gradient(145deg, #e3bd6526, #ffffff05);
+      background: linear-gradient(145deg,#e3bd6526,#ffffff05);
       transform: rotate(2deg);
     }
 
@@ -258,7 +257,7 @@
       font-size: .8rem;
     }
 
-    /* STATS */
+    /* HIGHLIGHTS */
     .stats {
       background: #101013;
       border-block: 1px solid #ffffff12;
@@ -266,7 +265,7 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
     }
 
     .stat {
@@ -278,7 +277,7 @@
     .stat strong { display: block; color: var(--gold); }
     .stat span { color: var(--muted); font-size: .85rem; }
 
-    /* GENERAL CARDS */
+    /* ABOUT */
     .grid2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -310,7 +309,7 @@
     /* INTERACTIVE SKILLS */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4,1fr);
       gap: 14px;
     }
 
@@ -323,7 +322,6 @@
       border: 1px solid #ffffff12;
       border-radius: 16px;
       padding: 19px;
-      cursor: pointer;
       transition: .2s;
     }
 
@@ -338,15 +336,9 @@
       background: #e3bd6510;
     }
 
-    .symbol {
-      font-size: 1.5rem;
-      color: var(--gold);
-    }
+    .symbol { font-size: 1.5rem; color: var(--gold); }
 
-    .skill h3 {
-      font-size: 1rem;
-      margin: 8px 0 4px;
-    }
+    .skill h3 { font-size: 1rem; margin: 8px 0 4px; }
 
     .skill p {
       color: var(--muted);
@@ -388,15 +380,12 @@
       margin-bottom: 8px;
     }
 
-    .detail-columns ul {
-      color: var(--muted);
-      padding-left: 20px;
-    }
+    .detail-columns ul { color: var(--muted); padding-left: 20px; }
 
     /* PROJECTS */
     .projects {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 17px;
     }
 
@@ -411,7 +400,7 @@
       height: 130px;
       display: grid;
       place-items: center;
-      background: radial-gradient(circle at 50% 0, #e3bd6528, transparent 70%), #19191e;
+      background: radial-gradient(circle at 50% 0,#e3bd6528,transparent 70%),#19191e;
       border-bottom: 1px solid #ffffff10;
     }
 
@@ -454,13 +443,9 @@
       font-size: .73rem;
     }
 
-    .note {
-      color: var(--muted);
-      font-size: .84rem;
-      margin-top: 17px;
-    }
+    .note { color: var(--muted); font-size: .84rem; margin-top: 17px; }
 
-    /* EDUCATION AND UNIVERSITY LOGO */
+    /* UNIVERSITY LOGO */
     .education {
       display: grid;
       grid-template-columns: 100px 1fr;
@@ -497,11 +482,7 @@
       gap: 22px;
     }
 
-    .contact-list {
-      display: grid;
-      gap: 11px;
-      margin-top: 20px;
-    }
+    .contact-list { display: grid; gap: 11px; margin-top: 20px; }
 
     .contact-item {
       display: flex;
@@ -527,11 +508,7 @@
       color: var(--gold);
     }
 
-    .contact-item small {
-      display: block;
-      color: var(--muted);
-    }
-
+    .contact-item small { display: block; color: var(--muted); }
     .contact-item strong { font-size: .91rem; }
 
     .cta {
@@ -539,15 +516,10 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      background: linear-gradient(145deg, #e3bd6514, transparent 70%), var(--panel);
+      background: linear-gradient(145deg,#e3bd6514,transparent 70%),var(--panel);
     }
 
-    .cta h3 {
-      font-size: 1.8rem;
-      line-height: 1.2;
-      margin: 10px 0;
-    }
-
+    .cta h3 { font-size: 1.8rem; line-height: 1.2; margin: 10px 0; }
     .cta p { color: var(--muted); }
 
     footer {
@@ -566,11 +538,11 @@
 
     .foot strong { color: var(--gold); }
 
-    /* RESPONSIVE DESIGN */
+    /* MOBILE */
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1.1fr .8fr; gap: 28px; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .projects { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .projects { grid-template-columns: repeat(2,1fr); }
       .project:last-child { grid-column: span 2; }
       .nav-links { gap: 13px; }
     }
@@ -578,7 +550,6 @@
     @media (max-width: 680px) {
       .container { width: calc(100% - 28px); }
       .section { padding: 60px 0; }
-
       .menu { display: block; }
 
       .nav-links {
@@ -598,18 +569,17 @@
 
       .hero { padding: 52px 0 60px; }
       .hero-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: clamp(2.7rem, 12vw, 4.2rem); }
+      .hero h1 { font-size: clamp(2.7rem,12vw,4.2rem); }
 
       .portrait {
-        width: min(78%, 320px);
+        width: min(78%,320px);
         justify-self: center;
         margin-top: 15px;
       }
 
       .caption { left: -12px; }
-      .stats-grid { grid-template-columns: 1fr; }
+      .stats-grid, .grid2, .contact-grid { grid-template-columns: 1fr; }
       .stat + .stat { border-left: 0; border-top: 1px solid #ffffff12; }
-      .grid2, .contact-grid { grid-template-columns: 1fr; }
       .skills-grid, .projects { grid-template-columns: 1fr; }
       .project:last-child { grid-column: auto; }
       .detail-columns { grid-template-columns: 1fr; }
@@ -630,7 +600,12 @@
 <header>
   <div class="container nav">
     <a class="brand" href="#home">
-      <span class="brand-mark">MM</span>
+      <!-- YOUR PHOTO IN THE TOP-LEFT BADGE -->
+      <span class="brand-mark">
+        <img src="./mule.jpg" alt="Muluken Melkie"
+             onerror="this.style.display='none';">
+      </span>
+
       <span>
         Muluken Melkie
         <small>Computer Science Student</small>
@@ -638,7 +613,7 @@
     </a>
 
     <button class="menu" id="menuButton"
-      aria-expanded="false" aria-controls="navLinks">
+            aria-expanded="false" aria-controls="navLinks">
       Menu ☰
     </button>
 
@@ -654,7 +629,7 @@
 
 <main>
 
-  <!-- HERO -->
+  <!-- HERO / PROFILE -->
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div>
@@ -687,18 +662,10 @@
 
       <div class="portrait">
         <div class="frame">
-          <img
-            class="profile-photo"
-            src="./mule.jpg"
-            alt="Muluken Melkie"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
-          >
-          <div class="profile-photo placeholder" style="display:none">
-            <div>
-              <strong>MM</strong>
-              <p>Add your photo as <b>mule.jpg</b></p>
-            </div>
-          </div>
+          <img class="profile-photo"
+               src="./mule.jpg"
+               alt="Muluken Melkie"
+               onerror="this.style.display='none';">
         </div>
 
         <div class="caption">
@@ -746,8 +713,7 @@
             I'm a Computer Science student at the University of Gondar.
             I enjoy learning how software is designed, how data is
             organized, and how computers communicate across networks.
-            My goal is to turn what I learn in class into useful,
-            practical projects.
+            My goal is to turn what I learn into useful practical projects.
           </p>
         </article>
 
@@ -765,66 +731,62 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- INTERACTIVE SKILLS -->
   <section class="section" id="skills" style="background:#101013">
     <div class="container">
       <div class="heading">
         <div class="eyebrow">Technical interests</div>
         <h2>Explore my <span class="gold">skills.</span></h2>
-        <p>
-          Click any skill card to learn what it means, what it includes,
-          and how I can apply it in a practical project.
-        </p>
+        <p>Click any skill card to learn more about it.</p>
       </div>
 
       <div class="skills-grid">
-
         <button class="skill" data-skill="web" aria-expanded="true">
           <span class="symbol">⌘</span>
           <h3>Web Development</h3>
-          <p>Websites and interactive browser applications.</p>
+          <p>Websites and browser applications.</p>
           <span class="click-hint">Click to explore ↗</span>
         </button>
 
         <button class="skill" data-skill="software" aria-expanded="false">
           <span class="symbol">⌨</span>
           <h3>Software Development</h3>
-          <p>Programming, debugging, and solving problems.</p>
+          <p>Programming, debugging, and problem-solving.</p>
           <span class="click-hint">Click to explore ↗</span>
         </button>
 
         <button class="skill" data-skill="networking" aria-expanded="false">
           <span class="symbol">⌁</span>
           <h3>Networking</h3>
-          <p>IP addresses, switches, VLANs, and connectivity.</p>
+          <p>IP addresses, switches, and VLANs.</p>
           <span class="click-hint">Click to explore ↗</span>
         </button>
 
         <button class="skill" data-skill="systems" aria-expanded="false">
           <span class="symbol">▣</span>
           <h3>System Administration</h3>
-          <p>Operating systems, configuration, and troubleshooting.</p>
+          <p>Operating systems and troubleshooting.</p>
           <span class="click-hint">Click to explore ↗</span>
         </button>
 
         <button class="skill" data-skill="database" aria-expanded="false">
           <span class="symbol">▤</span>
           <h3>Databases</h3>
-          <p>Organizing, querying, and managing information.</p>
+          <p>Organizing and managing information.</p>
           <span class="click-hint">Click to explore ↗</span>
         </button>
 
         <button class="skill" data-skill="git" aria-expanded="false">
           <span class="symbol">⑂</span>
           <h3>Git & GitHub</h3>
-          <p>Version control, repositories, and collaboration.</p>
+          <p>Version control and repositories.</p>
           <span class="click-hint">Click to explore ↗</span>
         </button>
 
         <button class="skill" data-skill="algorithms" aria-expanded="false">
           <span class="symbol">∑</span>
           <h3>Algorithms</h3>
-          <p>Data structures and efficient problem-solving.</p>
+          <p>Data structures and problem-solving.</p>
           <span class="click-hint">Click to explore ↗</span>
         </button>
 
@@ -839,25 +801,16 @@
       <article class="skill-detail" aria-live="polite">
         <div class="eyebrow">Skill details</div>
         <h3 id="detailTitle">Web Development</h3>
-        <p id="detailDescription">
-          Web development involves creating websites and web applications.
-        </p>
+        <p id="detailDescription"></p>
 
         <div class="detail-columns">
           <div>
             <h4>What it includes</h4>
-            <ul id="detailIncludes">
-              <li>HTML for page structure.</li>
-              <li>CSS for design and layout.</li>
-              <li>JavaScript for interaction.</li>
-            </ul>
+            <ul id="detailIncludes"></ul>
           </div>
-
           <div>
             <h4>Practical example</h4>
-            <p id="detailExample">
-              Build a responsive portfolio with interactive project cards.
-            </p>
+            <p id="detailExample"></p>
           </div>
         </div>
       </article>
@@ -871,8 +824,8 @@
         <div class="eyebrow">Selected work</div>
         <h2>Projects & <span class="gold">practice.</span></h2>
         <p>
-          These are project areas to showcase. Update the descriptions
-          and links to match the work you have actually completed.
+          Showcase your projects here. Update these descriptions
+          to reflect the work you have actually completed.
         </p>
       </div>
 
@@ -898,8 +851,8 @@
           <div class="project-content">
             <h3>Personal Portfolio Website</h3>
             <p>
-              A responsive website introducing my background,
-              technical interests, projects, and contact information.
+              A responsive portfolio introducing my background,
+              technical interests, projects, and contact details.
             </p>
             <div class="tags">
               <span class="tag">HTML</span>
@@ -928,8 +881,7 @@
       </div>
 
       <p class="note">
-        Important: only describe features as completed if you have
-        actually built and tested them.
+        Only describe features as completed if you have actually built and tested them.
       </p>
     </div>
   </section>
@@ -945,7 +897,7 @@
       <article class="panel education">
         <div class="edu-mark">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Up_to_date_logo.png"
+            src="./uog-logo.png"
             alt="University of Gondar logo"
             loading="lazy"
             onerror="this.onerror=null;this.src='https://uog.edu.et/favicon.ico';"
@@ -956,15 +908,17 @@
           <h3>University of Gondar</h3>
           <p class="dept">Department of Computer Science</p>
           <p>B.Sc. Computer Science student · Gondar, Ethiopia</p>
+
           <p style="margin-top:12px">
             My study interests include programming, data structures
             and algorithms, databases, operating systems, computer
             networks, and software development.
           </p>
+
           <p style="margin-top:12px">
-            <a class="gold" href="https://uog.edu.et/" target="_blank"
-               rel="noopener noreferrer">
-              Visit the University of Gondar website ↗
+            <a class="gold" href="https://uog.edu.et/"
+               target="_blank" rel="noopener noreferrer">
+              Visit University of Gondar ↗
             </a>
           </p>
         </div>
@@ -989,8 +943,7 @@
           <h3>Contact details</h3>
 
           <div class="contact-list">
-            <a class="contact-item"
-               href="mailto:mulukenamaru74@gmail.com">
+            <a class="contact-item" href="mailto:mulukenamaru74@gmail.com">
               <span class="contact-icon">✉</span>
               <span>
                 <small>Email</small>
@@ -1046,110 +999,93 @@
 </footer>
 
 <script>
-  // Information shown when each skill card is clicked.
   const skillInfo = {
     web: {
       title: "Web Development",
-      description:
-        "Web development is the process of creating websites and web applications that people access in a browser. It combines page structure, visual design, and interactive behavior.",
+      description: "Web development means creating websites and browser-based applications.",
       includes: [
-        "HTML defines the structure and meaning of content.",
-        "CSS controls colors, spacing, layout, and responsive design.",
-        "JavaScript adds behavior such as menus, tabs, and dynamic content."
+        "HTML defines the structure of a page.",
+        "CSS controls design, colors, and responsive layout.",
+        "JavaScript adds interactive behavior."
       ],
-      example:
-        "Build a responsive portfolio, a student information page, or a simple to-do app. This portfolio is an example of a front-end website."
+      example: "Build a responsive portfolio or a simple interactive web application."
     },
 
     software: {
       title: "Software Development",
-      description:
-        "Software development involves planning, writing, testing, and maintaining programs that solve problems.",
+      description: "Software development involves designing, writing, testing, and maintaining programs.",
       includes: [
-        "Programming fundamentals: variables, conditions, loops, and functions.",
-        "Object-oriented programming: classes, objects, encapsulation, and inheritance.",
-        "Testing, debugging, readable code, and software design."
+        "Programming fundamentals and functions.",
+        "Object-oriented programming and classes.",
+        "Testing, debugging, and readable code."
       ],
-      example:
-        "Create a Java student-registration program that stores student details, validates input, and displays saved records."
+      example: "Build a Java student-registration program that stores and displays student details."
     },
 
     networking: {
       title: "Networking",
-      description:
-        "Computer networking connects computers and devices so they can exchange information and share resources.",
+      description: "Networking connects computers so they can communicate and share resources.",
       includes: [
-        "IP addresses and subnet masks identify networks and hosts.",
-        "Switches and VLANs organize devices into network segments.",
-        "Routers connect networks, while DNS resolves domain names."
+        "IP addresses and subnet masks.",
+        "Switches, routers, and VLANs.",
+        "Basic connectivity troubleshooting."
       ],
-      example:
-        "Use Cisco Packet Tracer to configure VLANs, assign IP addresses, and test communication between devices."
+      example: "Configure VLANs and IP addresses in Cisco Packet Tracer and test connectivity."
     },
 
     systems: {
       title: "System Administration",
-      description:
-        "System administration involves installing, configuring, monitoring, securing, and troubleshooting computers and servers.",
+      description: "System administration involves configuring, maintaining, and troubleshooting computers and servers.",
       includes: [
-        "Operating-system users, permissions, files, and processes.",
-        "Software installation, updates, backups, and logs.",
-        "Command-line tools and systematic troubleshooting."
+        "Operating-system users and permissions.",
+        "Software updates, backups, and files.",
+        "Command-line tools and troubleshooting."
       ],
-      example:
-        "Manage user accounts, organize files and permissions, and diagnose a common network or software problem."
+      example: "Create user accounts, manage permissions, and troubleshoot a system issue."
     },
 
     database: {
       title: "Databases",
-      description:
-        "A database stores information in an organized form so applications can add, update, search, and retrieve it.",
+      description: "Databases store information in an organized way so applications can retrieve and update it.",
       includes: [
-        "Tables, rows, columns, primary keys, and relationships.",
-        "SQL commands such as SELECT, INSERT, UPDATE, and DELETE.",
-        "Data validation, integrity, and database design."
+        "Tables, rows, columns, and keys.",
+        "SQL queries such as SELECT and INSERT.",
+        "Data relationships and integrity."
       ],
-      example:
-        "Design a student database with ID, name, department, and GPA fields, then query students by department."
+      example: "Design a student database and retrieve student records by department."
     },
 
     git: {
       title: "Git & GitHub",
-      description:
-        "Git tracks changes to source code. GitHub hosts repositories online for backup, sharing, and collaboration.",
+      description: "Git tracks code changes, while GitHub hosts repositories online.",
       includes: [
-        "Repositories store project files and their history.",
-        "Commits record meaningful changes to a project.",
-        "Branches and README files help organize collaborative work."
+        "Repositories and commits.",
+        "Branches and collaboration.",
+        "README documentation and GitHub Pages."
       ],
-      example:
-        "Create a GitHub repository, upload index.html and mule.jpg, and publish your portfolio using GitHub Pages."
+      example: "Publish your portfolio website and maintain its source code on GitHub."
     },
 
     algorithms: {
       title: "Algorithms & Data Structures",
-      description:
-        "An algorithm is a step-by-step method for solving a problem. Data structures organize information for efficient processing.",
+      description: "Algorithms describe steps to solve problems, while data structures organize information.",
       includes: [
-        "Arrays, linked lists, stacks, queues, trees, and hash tables.",
-        "Searching and sorting techniques.",
-        "Understanding time and memory requirements."
+        "Arrays, linked lists, stacks, and queues.",
+        "Searching and sorting.",
+        "Time and memory complexity."
       ],
-      example:
-        "Implement a stack using an array or linked list and demonstrate push, pop, peek, and empty-stack handling."
+      example: "Implement a stack using an array or linked list with push, pop, and peek operations."
     },
 
     security: {
       title: "Cybersecurity Basics",
-      description:
-        "Cybersecurity helps protect devices, accounts, networks, and data from unauthorized access and misuse.",
+      description: "Cybersecurity protects devices, accounts, networks, and data from unauthorized access.",
       includes: [
-        "Use strong, unique passwords and multi-factor authentication.",
-        "Keep software updated and apply appropriate permissions.",
-        "Recognize phishing and back up important data."
+        "Strong passwords and multi-factor authentication.",
+        "Software updates and permissions.",
+        "Phishing awareness and backups."
       ],
-      example:
-        "Secure a test account with multi-factor authentication and learn to recognize suspicious emails."
+      example: "Learn to recognize suspicious messages and secure a test account."
     }
   };
 
@@ -1190,10 +1126,9 @@
     });
   });
 
-  // Show Web Development information when the page first opens.
   showSkill("web");
 
-  // Mobile navigation menu.
+  // Mobile menu
   const menuButton = document.getElementById("menuButton");
   const navLinks = document.getElementById("navLinks");
 
@@ -1203,7 +1138,6 @@
     menuButton.textContent = isOpen ? "Close ✕" : "Menu ☰";
   });
 
-  // Close the mobile menu after a navigation link is clicked.
   navLinks.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
@@ -1212,9 +1146,8 @@
     });
   });
 
-  // Automatically update the copyright year.
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+  // Current copyright year
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 </body>
