@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Muluken Melkie | Computer Science Portfolio</title>
-  <meta name="description" content="Portfolio of Muluken Melkie, Computer Science student at the University of Gondar.">
+  <meta name="description" content="Portfolio of Muluken Melkie, Computer Science student at the University of Gondar, Ethiopia.">
 
   <style>
     :root {
@@ -105,8 +105,11 @@
       align-items: center;
       gap: 45px;
       flex-wrap: wrap;
-      background:
-        radial-gradient(ellipse at top right, #302711 0%, #0b0b0b 55%);
+      background: radial-gradient(
+        ellipse at top right,
+        #302711 0%,
+        #0b0b0b 55%
+      );
     }
 
     .hero-content {
@@ -147,6 +150,7 @@
       border-radius: 6px;
       font-weight: bold;
       margin: 12px 10px 0 0;
+      cursor: pointer;
     }
 
     .btn-outline {
@@ -319,7 +323,6 @@
       <a href="#contact" class="btn btn-outline">Contact Me</a>
     </div>
 
-    <!-- Put mule.jpg beside this index.html file -->
     <img
       src="./mule.jpg"
       alt="Muluken Melkie profile photo"
@@ -345,7 +348,7 @@
       </p>
 
       <p>
-        I want to strengthen my practical skills by building
+        My goal is to improve my practical skills by building
         projects, solving technical problems, and learning new
         technologies.
       </p>
@@ -366,35 +369,35 @@
     </p>
 
     <div class="skills-grid">
-      <button class="skill" data-skill="web">
+      <button class="skill" data-skill="web" aria-pressed="false">
         Web Development
       </button>
 
-      <button class="skill" data-skill="software">
+      <button class="skill" data-skill="software" aria-pressed="false">
         Software Development
       </button>
 
-      <button class="skill" data-skill="network">
+      <button class="skill" data-skill="network" aria-pressed="false">
         Computer Networking
       </button>
 
-      <button class="skill" data-skill="system">
+      <button class="skill" data-skill="system" aria-pressed="false">
         System Administration
       </button>
 
-      <button class="skill" data-skill="database">
+      <button class="skill" data-skill="database" aria-pressed="false">
         Database Management
       </button>
 
-      <button class="skill" data-skill="git">
+      <button class="skill" data-skill="git" aria-pressed="false">
         Git and GitHub
       </button>
 
-      <button class="skill" data-skill="algorithm">
+      <button class="skill" data-skill="algorithm" aria-pressed="false">
         Algorithms and Data Structures
       </button>
 
-      <button class="skill" data-skill="security">
+      <button class="skill" data-skill="security" aria-pressed="false">
         Cybersecurity Basics
       </button>
     </div>
@@ -427,8 +430,8 @@
     <h2>My Projects</h2>
 
     <p>
-      These project descriptions should be updated to match
-      your actual work and progress.
+      Update these descriptions to reflect your actual project
+      progress and completed work.
     </p>
 
     <div class="project-grid">
@@ -450,7 +453,7 @@
         <h3>Personal Portfolio Website</h3>
 
         <p>
-          A responsive website that presents my background,
+          A responsive website presenting my background,
           technical interests, skills, and projects.
         </p>
 
@@ -481,7 +484,6 @@
 
     <div class="education-card">
       <h3>University of Gondar (UOG)</h3>
-
       <p>Computer Science</p>
       <p>Gondar, Ethiopia</p>
     </div>
@@ -493,14 +495,21 @@
 
     <div class="contact-box">
       <p>
-        If you would like to discuss technology, projects,
-        or opportunities, you can contact me below.
+        Feel free to contact me about technology,
+        software development, projects, or opportunities.
       </p>
 
       <p>
         <strong>Email:</strong>
         <a href="mailto:mulukenamaru74@gmail.com">
           mulukenamaru74@gmail.com
+        </a>
+      </p>
+
+      <p>
+        <strong>Phone:</strong>
+        <a href="tel:+251918511548">
+          +251 918511548
         </a>
       </p>
 
@@ -515,16 +524,12 @@
         </a>
       </p>
 
-      <p>
-        <strong>Phone:</strong>
-        <a href="tel:+521918511548">+521 918511548</a>
-      </p>
-
-      <a
-        class="btn"
-        href="mailto:mulukenamaru74@gmail.com"
-      >
+      <a class="btn" href="mailto:mulukenamaru74@gmail.com">
         Send Me an Email
+      </a>
+
+      <a class="btn btn-outline" href="tel:+251918511548">
+        Call Me
       </a>
     </div>
   </section>
@@ -537,7 +542,7 @@
     </p>
   </footer>
 
-  <!-- INTERACTIVE SKILLS JAVASCRIPT -->
+  <!-- INTERACTIVE SKILLS SCRIPT -->
   <script>
     const skills = {
       web: {
@@ -593,7 +598,7 @@
       git: {
         title: "Git and GitHub",
         description:
-          "Git tracks changes in source code, while GitHub hosts repositories for sharing and collaborating on projects.",
+          "Git tracks changes in source code, while GitHub hosts repositories for sharing and collaboration.",
         concepts:
           "Repositories, commits, branches, merges, pushes, and pull requests.",
         example:
